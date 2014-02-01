@@ -1,0 +1,528 @@
+
+g-app.el,445
+(define-derived-mode g-app-mode 68,2467
+(define-key g-app-mode-map 74,2655
+(defvar g-app-publish-action 76,2710
+(defvar g-app-this-url 81,2917
+(defvar g-app-auth-handle 85,3046
+(defun g-app-get-entry 96,3369
+(defun g-app-send-buffer 120,4132
+(defun g-app-post-entry 149,5195
+(defun g-app-put-entry 155,5328
+(defun g-app-delete-entry 160,5438
+(defun g-app-publish 173,5827
+(defun g-app-edit-entry 185,6251
+(defun g-app-view 209,7151
+
+g-auth.el,492
+(defgroup g-auth 76,2869
+(defcustom g-user-email 79,2929
+(defvar g-auth-lifetime-internal 86,3100
+(defcustom g-auth-lifetime 90,3216
+(defvar g-auth-scratch-buffer" 103,3550
+(defvar g-auth-url-pattern106,3639
+(defsubst g-auth-url 110,3766
+(defstruct g-auth122,4083
+(defsubst g-cookie 134,4310
+(defconst g-authorization-header-format140,4520
+(defsubst g-authorization 144,4652
+(defsubst g-auth-expired-p 150,4860
+(defun g-authenticate 161,5192
+(defun g-auth-ensure-token 212,7248
+
+g-autogen.el,251
+(defvar g-directory 64,2349
+(defvar g-autogen-autoloads-file68,2502
+(defvar g-autogen-updator75,2680
+(defun g-autogen-generate-autoloads 83,2922
+(defvar g-autogen-custom-dependencies-file93,3234
+(defun g-autogen-custom-make-dependencies 97,3379
+
+g-cus-load.el,81
+(defmacro custom-put-if-not 40,1734
+(defvar custom-versions-load-alist 45,1861
+
+g-load-path.el,28
+(defvar g-directory36,1367
+
+g-loaddefs.el,437
+(defvar g-auth-lifetime 6,132
+(defvar gcal-default-user-email 69,1860
+(defvar gcal-user-email 74,1985
+(defvar gcal-calendar-agenda-days 100,2496
+(define-prefix-command 'gcal-calendar-prefix-map)gcal-calendar-prefix-map115,2832
+(defsubst gfeeds-feed 193,4696
+(defsubst gfeeds-lookup 196,5139
+(defsubst gfeeds-find 199,5586
+(defvar gfeeds-freshness 202,6030
+(defvar gweb-my-location 596,16155
+(defvar gweb-my-address 599,16265
+
+g-utils.el,1379
+(defvar g-directory 65,2410
+(defvar g-scratch-buffer" 69,2563
+(defcustom g-curl-program 72,2650
+(defcustom g-atom-view-xsl77,2751
+(defcustom g-atom-edit-filter83,2906
+(defcustom g-curl-common-options90,3118
+(defcustom g-html-handler 96,3299
+(defcustom g-url-under-point 106,3605
+(defcustom g-xslt-program 114,3887
+(defcustom g-cookie-jar119,3974
+(defvar g-cookie-options132,4372
+(defcustom g-curl-debug 137,4522
+(defsubst g-buffer-bytes 147,4754
+(defsubst g-curl-debug 156,4961
+(defsubst g-url-encode 166,5138
+(defsubst g-xsl-transform-region 181,5580
+(defvar g-html-charent-alist194,5830
+(defsubst g-html-unescape-region 201,6009
+(defsubst g-html-escape-region 213,6410
+(defsubst g-json-get 228,6839
+(defsubst g-json-lookup 237,7117
+(defalias 'g-json-aref g-json-aref250,7477
+(defmacro g-using-scratch(255,7535
+(defsubst g-get-result 268,7993
+(defsubst g-json-get-result(278,8339
+(defsubst g-display-result 284,8502
+(defsubst g-display-xml-string 297,9032
+(defsubst g-display-xml-buffer 308,9414
+(defvar g-curl-atom-header321,9823
+(defvar g-curl-data-binary325,9979
+(defvar g-mime-separator329,10059
+(defvar g-curl-image-options333,10120
+(defvar g-crlf-pair337,10266
+(defsubst g-http-headers 342,10424
+(defsubst g-http-body 377,11628
+(defsubst g-http-header 386,11871
+(defvar g-user-edit-buffer 392,12090
+(defun g-get-user-input 395,12180
+
+g.el,21
+(defgroup g 61,2360
+
+gblogger.el,828
+(defgroup gblogger 77,2835
+(defcustom gblogger-user-email 81,2913
+(defcustom gblogger-user-password 88,3116
+(defcustom gblogger-posting-url 94,3338
+(defcustom gblogger-author 100,3527
+(defvar gblogger-generator-name 105,3645
+(defvar gblogger-publish-action 108,3745
+(defvar gblogger-new-entry-template112,3903
+(defconst gblogger-service-name 128,4295
+(defconst gblogger-base-url131,4380
+(defsubst gblogger-p 135,4490
+(defsubst make-gblogger-auth 143,4679
+(defvar gblogger-auth-handle151,4994
+(defun gblogger-blog 161,5207
+(defun gblogger-atom-display 169,5460
+(defun gblogger-get-entry 178,5766
+(defun gblogger-edit-entry 187,6022
+(defun gblogger-new-entry 215,6983
+(defun gblogger-delete-entry 246,8046
+(defun gblogger-add-label 255,8283
+(defun gblogger-sign-out(273,8641
+(defun gblogger-sign-in(285,9075
+
+gcal.el,2483
+(defgroup gcal 71,2506
+(defcustom gcal-default-user-email 76,2574
+(defcustom gcal-user-email 86,2783
+(defcustom gcal-user-password 93,2979
+(defconst gcal-service-name 102,3218
+(defsubst gcal-p 105,3301
+(defsubst make-gcal-auth 113,3479
+(defvar gcal-auth-handle 121,3762
+(defun gcal-authenticate 124,3856
+(defvar gcal-quickadd-template132,4029
+(defvar gcal-event-template149,4635
+(defvar gcal-attendee-template172,5351
+(defstruct gcal-event185,5595
+(defun gcal-attendee-list-as-xml 194,5742
+(defun gcal-event-as-xml 209,6235
+(defstruct gcal-attendee221,6717
+(defvar gcal-event-transparency-alist232,7022
+(defsubst gcal-event-transparency-value 236,7165
+(defvar gcal-event-status-alist242,7414
+(defsubst gcal-event-status-value 247,7556
+(defsubst gcal-read-transparency 253,7781
+(defsubst gcal-read-status 258,7945
+(defcustom gcal-calendar-view263,8088
+(defcustom gcal-event-view268,8228
+(defcustom gcal-event-time-format 273,8367
+(defsubst gcal-format-time-string 278,8491
+(defsubst gcal-read-time 290,8990
+(defun gcal-read-calendar-date 295,9156
+(defun gcal-read-calendar-time 323,10111
+(defsubst gcal-read-who 355,11179
+(defun gcal-read-event 375,11690
+(defvar gcal-default-feed-url407,12791
+(defvar gcal-default-my-calendars-url412,12954
+(defvar gcal-feed-url-template418,13131
+(defvar gcal-private-feed-url423,13347
+(defsubst gcal-private-feed-url 427,13495
+(defsubst gcal-feed-url 434,13751
+(defsubst gcal-post-event 443,14094
+(defsubst gcal-post-quickadd 454,14479
+(defun gcal-event-as-diary-entry 466,14923
+(defun gcal-add-event 484,15517
+(defun gcal-quickadd-event 532,17298
+(defun gcal-delete-event 563,18413
+(defcustom gcal-event-accept573,18730
+(defun gcal-accept-event 578,18870
+(defcustom gcal-event-reject609,19889
+(defun gcal-reject-event 615,20044
+(defcustom gcal-calendar-agenda-days 650,21081
+(defcustom gcal-autoinsert-into-emacs-calendar 655,21213
+(defun gcal-calendar-get-date 660,21356
+(defconst gcal-privacy-choices671,21689
+(defconst gcal-projection-choices675,21782
+(defun gcal-calendar-agenda 679,21881
+(defun gcal-view 748,24476
+(defun gcal-show-event 766,25014
+(defvar gcal-feeds-template-url783,25431
+(defsubst gcal-feeds-url 786,25561
+(defun gcal-calendars 791,25719
+(defun gcal-my-calendars 807,26252
+(define-prefix-command  'gcal-calendar-prefix-map)gcal-calendar-prefix-map831,26902
+(defun gcal-emacs-calendar-setup 834,26969
+(defun gcal-sign-out(851,27454
+(defun gcal-sign-in(863,27853
+
+gcontacts.el,294
+(defgroup gcontacts 67,2623
+(defcustom gcontacts-user-email 71,2681
+(defcustom gcontacts-user-password 78,2887
+(defconst gcontacts-service-name 87,3136
+(defsubst gcontacts-p 90,3230
+(defvar gcontacts-process 98,3421
+(defun gcontacts-initialize 102,3538
+(defun gcontacts-create 132,4581
+
+gdocs.el,1213
+(defgroup gdocs 95,3624
+(defcustom gdocs-user-email 99,3674
+(defcustom gdocs-user-password 106,3865
+(defconst gdocs-service-name 115,4102
+(defsubst gdocs-p 118,4187
+(defsubst make-gdocs-auth 126,4360
+(defvar gdocs-auth-handle 134,4651
+(defun gdocs-authenticate 137,4743
+(defvar gdocs-feeds-template-url145,4914
+(defsubst gdocs-feeds-url 149,5041
+(defun gdocs-doclist 154,5194
+(defvar gdocs-upload-options180,6100
+(defun gdocs-publish-from-org 185,6259
+(defvar gdocs-download-template-url229,7936
+(defsubst gdocs-download-url 233,8077
+(defun gdocs-fetch-document 238,8234
+(defun gdocs-fetch-document-text 262,9108
+(defun gdocs-fetch-document-html 269,9355
+(defvar gdocs-update-template-url279,9627
+(defsubst gdocs-update-url 283,9768
+(defun gdocs-blind-update 288,9916
+(defun gdocs-update-from-text 335,11743
+(defun gdocs-update-from-html 344,12125
+(defun gdocs-publish 357,12546
+(defun gdocs-publish-from-html 391,13832
+(defun gdocs-publish-from-text 396,13951
+(defvar  gdocs-acl-colaborator-template403,14088
+(defun gdocs-add-collaborator 413,14495
+(defun gdocs-delete-item 440,15392
+(defun gdocs-view-item 452,15649
+(defun gdocs-sign-out(463,15885
+(defun gdocs-sign-in(475,16289
+
+gfeeds.el,527
+(defgroup gfeeds 63,2321
+(defvar gfeeds-base-url70,2396
+(defvar gfeeds-feeds-url74,2525
+(defvar gfeeds-lookup-url78,2622
+(defvar gfeeds-find-url82,2722
+(defcustom gfeeds-referer 86,2820
+(defsubst gfeeds-feed 96,3009
+(defsubst gfeeds-lookup 113,3540
+(defsubst gfeeds-find 130,4081
+(defvar gfeeds-freshness-internal 158,4906
+(defcustom gfeeds-freshness 162,5017
+(defun gfeeds-titles 173,5373
+(defun gfeeds-html 194,6093
+(defun gfeeds-view 212,6562
+(defun gfeeds-lookup-and-view 231,7126
+(defgroup gfeeds 311,9799
+
+gfinance.el,527
+(defgroup gfinance 65,2366
+(defcustom gfinance-user-email 69,2422
+(defcustom gfinance-user-password 76,2626
+(defconst gfinance-service-name 85,2873
+(defsubst gfinance-p 88,2964
+(defsubst make-gfinance-auth 96,3153
+(defvar gfinance-auth-handle 104,3468
+(defun gfinance-authenticate 107,3570
+(defvar gfinance-feeds-template-url115,3754
+(defsubst gfinance-feeds-url 119,3906
+(defun gfinance-portfolios 124,4090
+(defun gfinance-display-feed 142,4704
+(defun gfinance-sign-out(162,5294
+(defun gfinance-sign-in(174,5729
+
+ghealth.el,484
+(defgroup ghealth 66,2372
+(defcustom ghealth-user-email 70,2426
+(defcustom ghealth-user-password 77,2628
+(defconst ghealth-service-name 86,2873
+(defsubst ghealth-p 89,2961
+(defsubst make-ghealth-auth 97,3144
+(defvar ghealth-auth-handle 105,3451
+(defun ghealth-authenticate 108,3549
+(defvar ghealth-feeds-template-url116,3728
+(defsubst ghealth-profile-list-url 120,3858
+(defun ghealth-profile-list 125,4033
+(defun ghealth-sign-out(145,4618
+(defun ghealth-sign-in(157,5042
+
+gnotebook.el,551
+(defgroup gnotebook 68,2433
+(defcustom gnotebook-user-email 72,2491
+(defcustom gnotebook-user-password 79,2697
+(defconst gnotebook-service-name 88,2946
+(defsubst gnotebook-p 91,3040
+(defconst gnotebook-base-url95,3197
+(defconst gnotebook-token-url99,3292
+(defsubst make-gnotebook-auth 107,3451
+(defvar gnotebook-auth-handle116,3845
+(defun gnotebook-post-authenticate-function 120,3951
+(defun gnotebook-authenticate 135,4539
+(defvar gnotebook-list-url-template143,4726
+(defsubst gnotebook-list-url 148,4864
+(defun gnotebook-list 155,5127
+
+gphoto.el,2027
+(defgroup gphoto 67,2474
+(defcustom gphoto-user-email 71,2526
+(defcustom gphoto-user-password 78,2724
+(defcustom gphoto-album-default-access 84,2942
+(defcustom gphoto-album-default-commenting-enabled"true"89,3075
+(defconst gphoto-service-name 99,3302
+(defsubst gphoto-p 102,3385
+(defsubst make-gphoto-auth 110,3564
+(defvar gphoto-auth-handle 118,3863
+(defun gphoto-authenticate 121,3959
+(defconst gphoto-base-url129,4134
+(defconst gphoto-album-or-tag133,4247
+(defsubst gphoto-read-feed-kind 138,4356
+(defvar gphoto-album-or-tag-template-url143,4537
+(defsubst gphoto-album-or-tag-url 147,4686
+(defun gphoto-feeds 152,4904
+(defun gphoto-albums(176,5641
+(defun gphoto-tags(187,5974
+(defun gphoto-view 194,6125
+(defun gphoto-download 213,6685
+(defvar gphoto-community-search-url-template233,7205
+(defun gphoto-community-search 238,7371
+(defvar gphoto-recent-url-template247,7637
+(defun gphoto-recent 253,7815
+(defvar gphoto-user-search-url-template265,8307
+(defun gphoto-user-search 271,8481
+(defvar gphoto-user-tagsearch-url-template285,8882
+(defun gphoto-user-tagsearch 291,9065
+(defstruct gphoto-album306,9478
+(defvar gphoto-album-template315,9697
+(defun gphoto-read-album 332,10320
+(defun gphoto-album-as-xml 355,11244
+(defsubst gphoto-album-create-url 367,11607
+(defsubst gphoto-post-album 375,11843
+(defun gphoto-album-create 397,12692
+(defstruct gphoto-photo419,13411
+(defun gphoto-read-photo 423,13464
+(defun gphoto-photo-as-xml 432,13776
+(defsubst gphoto-async-post-photo 440,13999
+(defun gphoto-photo-add 463,14789
+(defun gphoto-directory-add-photos 480,15348
+(defvar gphoto-tag-template506,16316
+(defvar gphoto-comment-template514,16562
+(defsubst gphoto-tag-as-xml 522,16836
+(defsubst gphoto-comment-as-xml 527,16980
+(defsubst gphoto-post-update 532,17148
+(defvar gphoto-update-types552,17963
+(defun gphoto-comment-or-tag 558,18075
+(defun gphoto-sign-out(592,19064
+(defun gphoto-sign-in(604,19479
+(defun gphoto-delete-item 616,19846
+(defun gphoto-edit-entry 627,20106
+
+greader.el,2581
+(defgroup greader 70,2407
+(defcustom greader-user-email 73,2460
+(defcustom greader-user-password 80,2660
+(defconst greader-service-name 89,2904
+(defsubst greader-p 92,2992
+(defvar greader-base-url97,3142
+(defsubst make-greader-auth 104,3275
+(defvar greader-auth-handle112,3582
+(defvar greader-edit-token-endpoint122,3851
+(defun greader-get-edit-token 125,3975
+(defvar greader-feed-url-pattern141,4483
+(defsubst greader-feed-url 146,4648
+(defvar greader-state-url-pattern154,4934
+(defcustom greader-number-of-articles 159,5109
+(defsubst greader-state-url 164,5223
+(defvar greader-state-alist172,5494
+(defcustom greader-default-state 179,5686
+(defcustom greader-atom-base192,6016
+(defvar greader-label-url-pattern198,6169
+(defsubst greader-label-url 203,6324
+(defvar greader-prefs-url210,6583
+(defvar greader-find-feed-url215,6731
+(defvar greader-edit-url-pattern220,6855
+(defvar greader-edit-alist224,6994
+(defsubst greader-edit-url 229,7120
+(defun greader-read-state 237,7316
+(defun greader-reading-list 246,7577
+(defun greader-read-preference 266,8294
+(defvar greader-preferences 274,8544
+(defun greader-preferences 278,8637
+(defvar greader-subscribed-feed-list-url304,9544
+(defvar greader-unread-count-url309,9712
+(defvar greader-subscription-opml-url314,9887
+(defvar greader-tag-list-url319,10037
+(defsubst greader-id-to-url 326,10174
+(defun greader-view-json-subscriptions 334,10373
+(defun greader-view-json-results 362,11255
+(defun greader-unread-count 389,12049
+(defsubst greader-get-unread-count-by-id 404,12633
+(defsubst greader-get-timestamp-by-id 413,12902
+(defsubst greader-subscriptions-list 425,13185
+(defun greader-subscriptions 448,14062
+(defun greader-feed-list 464,14714
+(defun greader-opml 471,14877
+(defun greader-view-json-tags 484,15327
+(defun greader-tag-list 508,16078
+(defun greader-tagged-reading-list 525,16708
+(defun greader-subscribe-feed 543,17210
+(defun greader-unsubscribe-feed 548,17377
+(defun greader-title-feed 553,17552
+(defun greader-tag-feed 562,17802
+(defun greader-untag-feed 570,18048
+(defun greader-build-edit-command 578,18298
+(defun greader-update-subscription 609,19799
+(defsubst greader-read-item-url 625,20326
+(defun greader-add-label 631,20569
+(defun greader-star 663,21521
+(defun greader-find-feeds 697,22444
+(defvar greader-search-url714,22885
+(defvar greader-contents-rest-url719,23039
+(defun greader-search-results 723,23175
+(defun greader-search 765,24743
+(defun greader-sign-out(777,24937
+(defun greader-sign-in(793,25466
+(defun greader-re-authenticate(804,25834
+
+gsheet.el,487
+(defgroup gsheet 68,2491
+(defcustom gsheet-user-email 72,2550
+(defcustom gsheet-user-password 79,2754
+(defconst gsheet-service-name 88,3001
+(defsubst gsheet-p 91,3092
+(defsubst make-gsheet-auth 99,3277
+(defvar gsheet-auth-handle107,3576
+(defun gsheet-authenticate 111,3680
+(defun gsheet-fetch 119,3874
+(defvar gsheet-feeds-template-url139,4507
+(defsubst gsheet-feeds-url 143,4664
+(defun gsheet-sheets 148,4827
+(defun gsheet-sign-out(168,5433
+(defun gsheet-sign-in(180,5854
+
+gskeleton.el,496
+(defgroup gskeleton 65,2362
+(defcustom gskeleton-user-email 69,2420
+(defcustom gskeleton-user-password 76,2626
+(defconst gskeleton-service-name 85,2875
+(defsubst gskeleton-p 88,2965
+(defsubst make-gskeleton-auth 96,3158
+(defvar gskeleton-auth-handle 104,3481
+(defun gskeleton-authenticate 107,3585
+(defvar gskeleton-feeds-template-url115,3772
+(defsubst gskeleton-feeds-url 118,3907
+(defun gskeleton-skels 123,4080
+(defun gskeleton-sign-out(144,4718
+(defun gskeleton-sign-in(156,5162
+
+gtube.el,916
+(defgroup gtube 66,2373
+(defcustom gtube-user-name 69,2425
+(defcustom gtube-user-email 76,2573
+(defcustom gtube-user-password 83,2755
+(defcustom gtube-developer-id 89,2972
+(defcustom gtube-view95,3154
+(defconst gtube-service-name 105,3328
+(defsubst gtube-p 108,3410
+(defconst gtube-rest-end-point113,3556
+(defsubst gtube-rest-resource 120,3702
+(defvar gtube-xml-buffer 142,4458
+(defsubst gtube-display 145,4542
+(defun gtube-user-profile 165,5089
+(defun gtube-user-favorites 178,5475
+(defun gtube-user-friends 191,5874
+(defun gtube-video-details 204,6261
+(defun gtube-video-by-tag 215,6585
+(defun gtube-video-by-category-and-tag 236,7294
+(defun gtube-video-playlist 260,8184
+(defun gtube-video-popular 281,8921
+(defun gtube-video-by-user 290,9244
+(defun gtube-video-featured 311,9958
+(defsubst make-gtube-auth 322,10168
+(defvar gtube-auth-handle 330,10459
+(defun gtube-authenticate 333,10555
+
+gweb.el,1004
+(defgroup gweb 65,2461
+(defvar gweb-base-url72,2535
+(defvar gweb-web-url76,2671
+(defvar gweb-news-url80,2765
+(defvar gweb-referer 84,2864
+(defvar gweb-suggest-url92,3025
+(defsubst gweb-suggest 97,3211
+(defvar gweb-google-suggest-metadata117,4018
+(defun gweb-suggest-completer 126,4312
+(defun gweb-news-suggest-completer 141,4820
+(defvar gweb-history 156,5347
+(defsubst gweb-google-autocomplete 165,5524
+(defsubst gweb-news-autocomplete 183,6155
+(defsubst gweb-results 201,6698
+(defsubst gweb-web-results 217,7236
+(defsubst gweb-news-results 226,7431
+(defun gweb-news-html 231,7589
+(defun gweb-news-view 249,8175
+(defvar gweb-search-results-handler 266,8683
+(defun gweb-google-at-point 270,8791
+(defvar gweb-maps-geocoder-base313,10659
+(defsubst gweb-maps-geocoder-url 317,10817
+(defsubst gweb-maps-reverse-geocoder-url 323,11029
+(defun gweb-maps-geocode 330,11272
+(defun gweb-maps-reverse-geocode 351,11972
+(defvar gweb-my-location372,12736
+(defcustom gweb-my-address377,12863
+
+gwis.el,433
+(defcustom gwis-search-table77,2826
+(defcustom gwis-search-type 92,3456
+(defsubst gwis-get-search-uri 107,3833
+(defvar gwis-query-string-cache 112,4003
+(defsubst gwis-get-query-string 115,4066
+(defvar gwis-idle-timer 128,4402
+(defcustom gwis-idle-delay 131,4466
+(define-derived-mode gwis-mode 136,4617
+(defun gwis-isearch 162,5700
+(defun gwis-select-searcher 176,6202
+(defun gwis 189,6545
+(defun gwis-setup-keys 200,6822
+
+indent-files.el,32
+(defun batch-indent-files 6,81
+
+org2blogger.el,29
+(defun org2gblogger 38,1051

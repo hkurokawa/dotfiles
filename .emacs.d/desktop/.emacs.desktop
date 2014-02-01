@@ -1,0 +1,30 @@
+;; -*- mode: emacs-lisp; coding: emacs-mule; -*-
+;; --------------------------------------------------------------------------
+;; Desktop File for Emacs
+;; --------------------------------------------------------------------------
+;; Created Mon Jul 16 11:08:37 2012
+;; Desktop file format version 206
+;; Emacs version 23.3.1
+
+;; Global section:
+(setq final-frame-params '("-unknown-TakaoGothic-normal-normal-normal-*-13-*-*-*-d-0-iso10646-1" (+ -10) 24 159 77 t))
+(setq desktop-missing-file-warning nil)
+(setq tags-file-name nil)
+(setq tags-table-list nil)
+(setq search-ring '("desktop"))
+(setq regexp-search-ring nil)
+(setq register-alist nil)
+(setq file-name-history '("~/.emacs.d/desktop" "~/.emacs"))
+
+;; Buffer section -- buffers listed in same order as in buffer list:
+(desktop-create-buffer 206
+  "/home/hiroshi/.emacs"
+  ".emacs"
+  'emacs-lisp-mode
+  nil
+  3955
+  '(1794 nil)
+  nil
+  nil
+  '((buffer-file-coding-system . utf-8-unix)))
+
