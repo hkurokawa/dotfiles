@@ -71,9 +71,8 @@
        (setq x-select-enable-clipboard t)
        ))
 
-;; Make regular expression case sensitibe by default
-(setq default-case-fold-search nil)
-
+;; make search case insensitive by default
+(setq-default case-fold-search t)
 
 ;;; Programming
 ;; Load jka-compr to look for a function with find-tag in a compressed EmacsLisp file
