@@ -182,3 +182,7 @@
       (iswitchb-visit-buffer
        (get-buffer (car iswitchb-matches))))
     (select-window (minibuffer-window))))
+
+;; point goes to the last place where it was when the same file was previously visited
+(when (require 'saveplace nil t)
+  (setq-default save-place t))
