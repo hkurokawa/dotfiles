@@ -15,11 +15,16 @@
 ;; add elisp, conf, public_repos to the load path
 (add-to-load-path "elisp")
 
-;;; Color Theme (https://code.google.com/p/gnuemacscolorthemetest/)
-;; select Clarity and Dark
-(when (require 'color-theme nil t)
-  (color-theme-initialize)
-  (color-theme-clarity))
+;;; Color Theme
+(if (>= emacs-major-version 23)
+  ;; If the version is 24 or above, use built-in color theme
+  (load-theme 'wheatgrass)
+  ;; If the version is under 24, use color-theme (https://code.google.com/p/gnuemacscolorthemetest/)
+  ;; select Clarity and Dark
+  (when (require 'color-theme nil t)
+    (color-theme-initialize)
+    (color-theme-clarity))
+  )
 
 ;;; Window setting
 ;; maximize the window
