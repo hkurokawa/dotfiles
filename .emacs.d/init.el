@@ -190,3 +190,6 @@
 ;; point goes to the last place where it was when the same file was previously visited
 (when (require 'saveplace nil t)
   (setq-default save-place t))
+
+;;; Version Control setting
+(require 'egg nil t)
