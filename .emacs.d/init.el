@@ -120,28 +120,36 @@
 )
 
 ;;; SKK settings
-;; SKK を Emacs の input method として使用する
-(setq default-input-method "japanese-skk")
-;; Emacs 起動時に SKK を前もってロードする
-(setq skk-preload t)
-;; C-xj は auto-fill にしない
-(global-set-key "\C-xj" 'skk-mode)
-;; C-x C-j は auto-fill
-(global-set-key "\C-x\C-j" 'skk-auto-fill-mode)
-;; 送り仮名が厳密に正しい候補を優先して表示
-(setq skk-henkan-strict-okuri-precedence t)
-;; 漢字登録時、送り仮名が厳密に正しいかをチェック
-(setq skk-check-okurigana-on-touroku t)
-;; `(' や `)' で全角の括弧を入力する。半角の括弧は、`z(' や `z)' で入力する。
-(setq skk-rom-kana-rule-list
-    '(("hh" "h" ("ッ" . "っ"))
-      ("(" nil "（")
-      (")" nil "）")
-      ("z(" nil "(")
-      ("z)" nil ")")
-))
-;; インジケータに色を付けない
-(setq skk-indicator-use-cursor-color nil)
+(setq skk-user-directory (expand-file-name (concat user-emacs-directory "ddskk/"))) ; ディレクトリ指定
+(when (require 'skk-autoloads nil t)
+  ;; SKK を Emacs の input method として使用する
+  (setq default-input-method "japanese-skk")
+  ;; Emacs 起動時に SKK を前もってロードする
+  (setq skk-preload t)
+  ;; C-xj は auto-fill にしない
+  (global-set-key "\C-xj" 'skk-mode)
+  ;; C-x C-j は auto-fill
+  (global-set-key "\C-x\C-j" 'skk-auto-fill-mode)
+  ;; 送り仮名が厳密に正しい候補を優先して表示
+  (setq skk-henkan-strict-okuri-precedence t)
+  ;; 漢字登録時、送り仮名が厳密に正しいかをチェック
+  (setq skk-check-okurigana-on-touroku t)
+  ;; `(' や `)' で全角の括弧を入力する。半角の括弧は、`z(' や `z)' で入力する。
+  (setq skk-rom-kana-rule-list
+	'(("hh" "h" ("ッ" . "っ"))
+	  ("(" nil "（")
+	  (")" nil "）")
+	  ("z(" nil "(")
+	  ("z)" nil ")")
+	  ))
+  ;; インジケータに色を付けない
+  (setq skk-indicator-use-cursor-color nil)
+  ;; Allow edit of private dictionary
+  (setq skk-jisyo-edit-user-accepts-editing t))
+
+;; Info settings
+(when (require 'info nil t)
+  (add-to-list 'Info-additional-directory-list (expand-file-name (concat user-emacs-directory "info"))))
 
 
 ;;; Google docs client
