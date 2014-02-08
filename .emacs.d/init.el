@@ -16,7 +16,7 @@
 (add-to-load-path "elisp")
 
 ;;; Color Theme
-(if (>= emacs-major-version 23)
+(if (> emacs-major-version 23)
   ;; If the version is 24 or above, use built-in color theme
   (load-theme 'wheatgrass)
   ;; If the version is under 24, use color-theme (https://code.google.com/p/gnuemacscolorthemetest/)
