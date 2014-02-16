@@ -86,11 +86,11 @@ module EnClient
         end
       end
       fields.delete nil
-      fields.join "\u0000"
+      fields.join ","
     end
 
     def deserialize(str)
-      fields = str.split "\u0000"
+      fields = str.split ","
       fields.each do |f|
         f =~ /\A([^=]*)=(.*)\z/
         varsym = $1.to_sym
@@ -120,10 +120,14 @@ module EnClient
             when :field_type_base64_array
               Formatter.decode_base64_list varval_str.split("|")
             when :field_type_object
-              a = Evernote::EDAM::Type::NoteAttributes.new
-              serialized = Formatter.decode_base64 varval_str
-              a.deserialize serialized
-              a
+              if varsym == :attributes
+                a = Evernote::EDAM::Type::NoteAttributes.new
+                deserialized = Formatter.decode_base64 varval_str
+                a.deserialize deserialized
+                a
+              else
+                raise IllegalStateException.new("illegal field type #{vartype} for #{varsym}")
+              end
             else
               raise IllegalStateException.new("illegal field type #{vartype} for #{varsym}")
             end
@@ -221,7 +225,7 @@ module Evernote
             :author => :field_type_string,
             :source => :field_type_string,
             :sourceURL => :field_type_string,
-            :sourceApplication => :field_type_string,
+            :sourceApplication => :field_type_base64,
             :shareDate => :field_type_timestamp,
             :reminderOrder => :field_type_int, # i64
             :reminderDoneTime => :field_type_timestamp,
@@ -1766,6 +1770,7 @@ module EnClient
     end
 
     def self.encode_base64(str)
+      str.encode(Encoding::UTF_8)
       b64str = Base64.encode64 str
       b64str.delete "\n\r"
     end
@@ -1777,7 +1782,8 @@ module EnClient
     end
 
     def self.decode_base64(b64str)
-      Base64.decode64 b64str
+      s = Base64.decode64 b64str
+      s.force_encoding(Encoding::UTF_8)
     end
 
     def self.decode_base64_list(b64list)
@@ -1827,7 +1833,8 @@ module EnClient
       full_class_name.split("::")[-1]
     end
 
-    IS_FORCE_ENCODING_SUPPORTED = "".respond_to? :force_encoding
+    # IS_FORCE_ENCODING_SUPPORTED = "".respond_to? :force_encoding
+    IS_FORCE_ENCODING_SUPPORTED = false
     def self.to_ascii(*rest)
       if IS_FORCE_ENCODING_SUPPORTED
         rest.each do |elem|
