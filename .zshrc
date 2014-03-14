@@ -181,3 +181,9 @@ zstyle ':vcs_info:*' formats "%F{green}%c%u[%b]%f"
 zstyle ':vcs_info:*' actionformats '[%b|%a]'
 precmd () { vcs_info }
 RPROMPT=$RPROMPT'${vcs_info_msg_0_}'
+
+#########################################
+# Go
+export GOPATH=/Users/hiroshi/go
+export PATH=$PATH:${GOPATH//://bin:}/bin
+
