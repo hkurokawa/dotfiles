@@ -224,6 +224,11 @@
 
 ;;; Howm
 ;; http://howm.sourceforge.jp/
+;; Loads only when user hits ¥C-c,,
 (setq howm-menu-lang 'ja)
 (global-set-key "\C-c,," 'howm-menu)
 (autoload 'howm-menu "howm" "Hitori Otegaru Wiki Modoki" t)
+;; a file per a day
+(setq howm-file-name-format "%Y/%m/%Y-%m-%d.txt")
+;; howm-keys location
+(setq howm-keyword-file "~/howm/.howm-keys")
