@@ -184,6 +184,6 @@ RPROMPT=$RPROMPT'${vcs_info_msg_0_}'
 
 #########################################
 # Go
-export GOPATH=/Users/hiroshi/go
+export GOPATH=$HOME/go
 export PATH=$PATH:${GOPATH//://bin:}/bin
 
