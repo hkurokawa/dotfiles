@@ -187,3 +187,8 @@ RPROMPT=$RPROMPT'${vcs_info_msg_0_}'
 export GOPATH=$HOME/go
 export PATH=$PATH:${GOPATH//://bin:}/bin
 
+#########################################
+# Android
+export ANDROID_HOME=$HOME/adt
+export ANDROID_SDK=$ANDROID_HOME/sdk
+export PATH=$PATH:${ANDROID_SDK}/platform-tools:${ANDROID_SDK}/tools
