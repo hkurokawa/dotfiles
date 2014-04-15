@@ -246,6 +246,7 @@
 ;; Set up exec path
 ;; TODO: should use environment variable "GOPATH" instead
 (add-to-list 'exec-path (expand-file-name "~/go/bin"))
+(add-to-list 'exec-path (expand-file-name "/usr/local/go/bin"))
 
 ;; golang mode
 (when (require 'go-mode-load nil t)
@@ -332,6 +333,9 @@
     (interactive)
     (show-all)
     (shell-command-on-region (point-min) (point-max) "go tool fix -diff"))
+
+  ;; run gofmt when saved
+  (add-hook 'before-save-hook 'gofmt-before-save)
   )
 ;;; Go flymake
 (require 'go-flymake nil t)
