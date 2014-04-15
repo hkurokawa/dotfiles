@@ -243,6 +243,10 @@
   (local-set-key ">" 'semantic-complete-self-insert))
 
 ;;; Go language
+;; Set up exec path
+;; TODO: should use environment variable "GOPATH" instead
+(add-to-list 'exec-path (expand-file-name "~/go/bin"))
+
 ;; golang mode
 (when (require 'go-mode-load nil t)
   (require 'go-autocomplete)
@@ -331,3 +335,6 @@
   )
 ;;; Go flymake
 (require 'go-flymake nil t)
+
+;;; Move to the home directory
+(cd "~")
