@@ -350,5 +350,10 @@
   '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
 
+;;; js2-refactor
+(when (require 'js2-refactor nil t)
+  (js2r-add-keybindings-with-prefix "C-c m")
+  )
+
 ;;; Move to the home directory
 (cd "~")
