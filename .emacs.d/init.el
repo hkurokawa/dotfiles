@@ -26,11 +26,13 @@
     (color-theme-clarity))
   )
 
-;;; Font setting
-;; Use other font if it is mac
-;; http://tcnksm.sakura.ne.jp/blog/2012/04/02/emacs/
+;;; Settings for Mac
 (when (eq window-system 'ns)
   (message "Loading settings for Mac...")
+  ;;; Font setting
+  ;; Use other font if it is mac
+  ;; http://tcnksm.sakura.ne.jp/blog/2012/04/02/emacs/
+ 
   ;; English
   (set-face-attribute 'default nil
              :family "Menlo" ;; font
@@ -40,10 +42,13 @@
   (set-fontset-font
    nil 'japanese-jisx0208
    (font-spec :family "Hiragino Kaku Gothic ProN")) ;; font
-
   ;; Make sure the ration between Hankaku and Zenkaku is 1:2
   (setq face-font-rescale-alist
-	'((".*Hiragino_Kaku_Gothic_ProN.*" . 1.2))))
+	'((".*Hiragino_Kaku_Gothic_ProN.*" . 1.2)))
+
+  ;; Replace `¥' with `\' forcibly
+  (define-key global-map [?¥] [?\\])
+ )
 
 ;;; Window setting
 ;; maximize the window
