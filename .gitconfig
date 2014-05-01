@@ -1,0 +1,27 @@
+[user]
+	name = hkurokawa
+	email = hiroshi.kurokawa@gunosy.com
+[color]
+	ui = true
+[push]
+	default = simple
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f
+[github]
+	user = hkurokawa
+	token = d90ff930ee441c2d4688877a0f3f6e9f7522dbe7
+[ghi]
+	token = !security find-internet-password -a hkurokawa -s github.com -l 'ghi token' -w
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
+[alias]
+	st = status
+	lo = log --oneline
+        lt = log --oneline --graph
+	co = checkout
+	cm = commit -m
+	df = diff
+	dc = diff --cached
+[core]
+	autocrlf = input
