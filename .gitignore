@@ -2,3 +2,4 @@
 .emacs.d/ddskk
 .emacs.d/tramp
 .emacs.d/.mc-lists.el
+.emacs.d/elpa/*
