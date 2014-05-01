@@ -192,3 +192,7 @@ export PATH=$PATH:${GOPATH//://bin:}/bin
 export ANDROID_HOME=$HOME/adt
 export ANDROID_SDK=$ANDROID_HOME/sdk
 export PATH=$PATH:${ANDROID_SDK}/platform-tools:${ANDROID_SDK}/tools
+
+#########################################
+# Anaconda
+export PATH=$PATH:$HOME/anaconda/bin
