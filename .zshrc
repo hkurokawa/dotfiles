@@ -150,8 +150,16 @@ elif which putclip >/dev/null 2>&1 ; then
     # Cygwin
     alias -g C='| putclip'
 fi
- 
- 
+
+########################################
+# Move to the parent directory with `^'
+function cdup() {
+echo
+cd ..
+zle reset-prompt
+}
+zle -N cdup
+bindkey '\^' cdup 
  
 ########################################
 # OS 別の設定
