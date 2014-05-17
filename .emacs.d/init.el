@@ -170,7 +170,29 @@
   ;; インジケータに色を付けない
   (setq skk-indicator-use-cursor-color nil)
   ;; Allow edit of private dictionary
-  (setq skk-jisyo-edit-user-accepts-editing t))
+  (setq skk-jisyo-edit-user-accepts-editing t)
+
+  ;; ddskk が起動しているときは付属のインクリメント検索を使う
+  (add-hook 'isearch-mode-hook
+          #'(lambda ()
+              (when (and (boundp 'skk-mode)
+                         skk-mode
+                         skk-isearch-mode-enable)
+                (skk-isearch-mode-setup))))
+  (add-hook 'isearch-mode-end-hook
+          #'(lambda ()
+              (when (and (featurep 'skk-isearch)
+                         skk-isearch-mode-enable)
+                (skk-isearch-mode-cleanup))))
+  ;; ;; SKK server settings
+  ;; (setq skk-server-host "localhost")
+  ;; Local large dictionary
+  (setq skk-large-jisyo "/usr/share/skk/SKK-JISYO.L")
+  ;; Enable dynamic completion
+  (setq skk-dcomp-activate t)
+  ;; Show annotations
+  (setq skk-show-annotatio t)
+  )
 
 ;; Info settings
 (when (require 'info nil t)
