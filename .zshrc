@@ -132,6 +132,12 @@ alias mv='mv -i'
  
 alias mkdir='mkdir -p'
  
+if [[ -x `which colordiff` ]]; then
+  alias diff='colordiff -u'
+else
+  alias diff='diff -u'
+fi
+
 # sudo の後のコマンドでエイリアスを有効にする
 alias sudo='sudo '
  

@@ -251,7 +251,8 @@
 ;; Set up exec path
 ;; TODO: should use environment variable "GOPATH" instead
 (add-to-list 'exec-path (expand-file-name "~/go/bin"))
-(add-to-list 'exec-path (expand-file-name "/usr/local/go/bin"))
+(add-to-list 'exec-path (expand-file-name "/usr/local/go/bin")) ;; Mac
+(add-to-list 'exec-path (expand-file-name "/usr/lib/go/bin")) ;; Ubuntu
 
 ;; golang mode
 (when (require 'go-mode-load nil t)
