@@ -385,3 +385,6 @@
 
 ;;; Move to the home directory
 (cd "~")
+
+;;; Set tab width
+(setq default-tab-width 4)
