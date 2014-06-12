@@ -269,6 +269,14 @@
   (local-set-key "." 'semantic-complete-self-insert)
   (local-set-key ">" 'semantic-complete-self-insert))
 
+;;; Coding helper
+;; Toggle comment and uncomment of the current line with C-c/
+(defun toggle-comment-on-line ()
+  "comment or uncomment current line"
+  (interactive)
+  (comment-or-uncomment-region (line-beginning-position) (line-end-position)))
+(global-set-key "\C-c/" 'toggle-comment-on-line)
+
 ;;; Go language
 ;; Set up exec path
 ;; TODO: should use environment variable "GOPATH" instead
