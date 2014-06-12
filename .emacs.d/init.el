@@ -1,6 +1,14 @@
+;;; Version predicates
+(defvar oldemacs-p (<= emacs-major-version 22)) ; <= 22
+(defvar emacs23-p (<= emacs-major-version 23))  ; <= 23
+(defvar emacs24-p (>= emacs-major-version 24))  ; >= 24
+;;; Platform predicates
+(defvar darwin-p (eq system-type 'darwin))      ; Mac OS X
+(defvar nt-p (eq system-type 'windows-nt))      ; Windows
+
 ;;; Load path
 ;; set user home directory
-(when (< emacs-major-version 23)
+(when oldemacs-p
   (defvar user-emacs-directory "~/.emacs.d/"))
 
 ;; prepare utility function for load path setting
@@ -16,7 +24,7 @@
 (add-to-load-path "elisp")
 
 ;;; Color Theme
-(if (> emacs-major-version 23)
+(if emacs24-p
   ;; If the version is 24 or above, use built-in color theme
   (load-theme 'wheatgrass)
   ;; If the version is under 24, use color-theme (https://code.google.com/p/gnuemacscolorthemetest/)
@@ -27,7 +35,7 @@
   )
 
 ;;; Settings for Mac
-(when (eq window-system 'ns)
+(when darwin-p
   (message "Loading settings for Mac...")
   ;;; Font setting
   ;; Use other font if it is mac
