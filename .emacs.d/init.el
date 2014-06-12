@@ -320,9 +320,9 @@
       (require 'easymenu)
       (defconst go-hooked-menu
         '("Go tools"
-	  ["Go run buffer" go t]
-	  ["Go reformat buffer" go-fmt-buffer t]
-	  ["Go check buffer" go-fix-buffer t]))
+	  ["Go run buffer (go)" go t]
+	  ["Go reformat buffer (go-fmt-buffer)" go-fmt-buffer t]
+	  ["Go check buffer (go-fix-buffer)" go-fix-buffer t]))
       (easy-menu-define
         go-added-menu
         (current-local-map)
