@@ -1,6 +1,14 @@
+;;; Version predicates
+(defvar oldemacs-p (<= emacs-major-version 22)) ; <= 22
+(defvar emacs23-p (<= emacs-major-version 23))  ; <= 23
+(defvar emacs24-p (>= emacs-major-version 24))  ; >= 24
+;;; Platform predicates
+(defvar darwin-p (eq system-type 'darwin))      ; Mac OS X
+(defvar nt-p (eq system-type 'windows-nt))      ; Windows
+
 ;;; Load path
 ;; set user home directory
-(when (< emacs-major-version 23)
+(when oldemacs-p
   (defvar user-emacs-directory "~/.emacs.d/"))
 
 ;; prepare utility function for load path setting
@@ -16,7 +24,7 @@
 (add-to-load-path "elisp")
 
 ;;; Color Theme
-(if (> emacs-major-version 23)
+(if emacs24-p
   ;; If the version is 24 or above, use built-in color theme
   (load-theme 'wheatgrass)
   ;; If the version is under 24, use color-theme (https://code.google.com/p/gnuemacscolorthemetest/)
@@ -27,7 +35,7 @@
   )
 
 ;;; Settings for Mac
-(when (eq window-system 'ns)
+(when darwin-p
   (message "Loading settings for Mac...")
   ;;; Font setting
   ;; Use other font if it is mac
@@ -269,6 +277,14 @@
   (local-set-key "." 'semantic-complete-self-insert)
   (local-set-key ">" 'semantic-complete-self-insert))
 
+;;; Coding helper
+;; Toggle comment and uncomment of the current line with C-c/
+(defun toggle-comment-on-line ()
+  "comment or uncomment current line"
+  (interactive)
+  (comment-or-uncomment-region (line-beginning-position) (line-end-position)))
+(global-set-key "\C-c/" 'toggle-comment-on-line)
+
 ;;; Go language
 ;; Set up exec path
 ;; TODO: should use environment variable "GOPATH" instead
@@ -304,9 +320,9 @@
       (require 'easymenu)
       (defconst go-hooked-menu
         '("Go tools"
-	  ["Go run buffer" go t]
-	  ["Go reformat buffer" go-fmt-buffer t]
-	  ["Go check buffer" go-fix-buffer t]))
+	  ["Go run buffer (go)" go t]
+	  ["Go reformat buffer (go-fmt-buffer)" go-fmt-buffer t]
+	  ["Go check buffer (go-fix-buffer)" go-fix-buffer t]))
       (easy-menu-define
         go-added-menu
         (current-local-map)
