@@ -15,6 +15,23 @@
 ;; add elisp, conf, public_repos to the load path
 (add-to-load-path "elisp")
 
+;;; Utility
+(defun apply-region-replace (start end func)
+  "run a function over the region between START and END in current buffer."
+  (save-excursion
+    (let ((text (delete-and-extract-region start end)))
+      (insert (funcall func text)))))
+
+(defun hex-region (start end)
+  "urlencode the region between START and END in current buffer."
+  (interactive "r")
+  (apply-region-replace start end #'url-hexify-string))
+
+(defun unhex-region (start end)
+  "de-urlencode the region between START and END in current buffer."
+  (interactive "r")
+  (apply-region-replace start end #'url-unhex-string))
+
 ;;; Color Theme
 (if (> emacs-major-version 23)
   ;; If the version is 24 or above, use built-in color theme
