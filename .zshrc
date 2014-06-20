@@ -141,6 +141,7 @@ fi
 # sudo の後のコマンドでエイリアスを有効にする
 alias sudo='sudo '
  
+alias odx='od -x -w16 -A x'
 # グローバルエイリアス
 alias -g L='| less'
 alias -g G='| grep'
@@ -200,7 +201,7 @@ RPROMPT=$RPROMPT'${vcs_info_msg_0_}'
 #########################################
 # Go
 export GOPATH=$HOME/go
-export PATH=$PATH:${GOPATH//://bin:}/bin
+export PATH=$PATH:/usr/local/go/bin:${GOPATH//://bin:}/bin
 
 #########################################
 # Android
