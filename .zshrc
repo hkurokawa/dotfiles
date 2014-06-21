@@ -142,6 +142,11 @@ fi
 alias sudo='sudo '
  
 alias odx='od -x -w16 -A x'
+
+# AWS
+alias awls="aws ec2 describe-instances --query 'Reservations[*].Instances[*].[State.Name, Tags[?Key==\`Name\`].Value | [0], PublicDnsName]' | sed -e 's/^running/R/g' | sed -e 's/^stopped/S/g' | peco"
+alias awssh='row=$(awls); name=$(echo ${row} | cut -f 2); host=$(echo ${row} | cut -f 3); echo "...ssh ${name} (${host})"; ssh ${host}'
+
 # グローバルエイリアス
 alias -g L='| less'
 alias -g G='| grep'
