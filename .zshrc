@@ -147,6 +147,12 @@ alias odx='od -x -w16 -A x'
 alias awls="aws ec2 describe-instances --query 'Reservations[*].Instances[*].[State.Name, Tags[?Key==\`Name\`].Value | [0], PublicDnsName]' | sed -e 's/^running/R/g' | sed -e 's/^stopped/S/g' | peco"
 alias awssh='row=$(awls); name=$(echo ${row} | cut -f 2); host=$(echo ${row} | cut -f 3); echo "...ssh ${name} (${host})"; ssh ${host}'
 
+# Git and ghi
+alias git-rmbranch='git branch --delete $(git branch --merged master | egrep -v "^\\s*master\\s*$" | peco)'
+alias git-co='git checkout $(git branch -r | peco | sed -e '"'"'s|^.*/\(.*\)$|\1|g'"'"')'
+alias ghi-issno='ghi list | peco | sed -e '"'"'s/^ *\([0-9][0-9]*\).*$/\1/g'"'"
+alias ghi-milno='ghi milestone | peco | sed -e '"'"'s/^ *\([0-9][0-9]*\):.*$/\1/g'"'"
+
 # グローバルエイリアス
 alias -g L='| less'
 alias -g G='| grep'
