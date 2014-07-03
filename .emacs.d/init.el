@@ -432,3 +432,7 @@
 
 ;;; Set Working directory
 (cd "~")
+
+;;; Quickrun
+(when (require 'quickrun nil t)
+  (global-set-key "\C-cr" 'quickrun))
