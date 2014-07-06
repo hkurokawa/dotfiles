@@ -6,6 +6,15 @@
 (defvar darwin-p (eq system-type 'darwin))      ; Mac OS X
 (defvar nt-p (eq system-type 'windows-nt))      ; Windows
 
+;;; Melpa
+;; Though I am not sure, it seems better to place this at the head
+;; Otherwise, `exec-path-from-shell-initialize` does not work
+;; and some warning messages are displayed related to package.el
+(require 'package)
+(add-to-list 'package-archives
+  '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(package-initialize)
+
 ;;; Load path
 ;; set user home directory
 (when oldemacs-p
@@ -73,6 +82,11 @@
 
   ;; Replace `¥' with `\' forcibly
   (define-key global-map [?¥] [?\\])
+
+  ;; Copy value of SHELL or other environment variables into exec-path
+  ;; so that it is the same as that of Emacs launched from shell
+  (when (require 'exec-path-from-shell nil t)
+    (exec-path-from-shell-initialize))
  )
 
 ;;; Window setting
@@ -303,11 +317,14 @@
 (global-set-key "\C-c/" 'toggle-comment-on-line)
 
 ;;; Go language
+;; Set up environment variables
+(setenv "GOPATH" (expand-file-name "~/go"))
+
 ;; Set up exec path
 ;; TODO: should use environment variable "GOPATH" instead
-(add-to-list 'exec-path (expand-file-name "~/go/bin"))
-(add-to-list 'exec-path (expand-file-name "/usr/local/go/bin")) ;; Mac
-(add-to-list 'exec-path (expand-file-name "/usr/lib/go/bin")) ;; Ubuntu
+;; (add-to-list 'exec-path (expand-file-name "~/go/bin"))
+;; (add-to-list 'exec-path (expand-file-name "/usr/local/go/bin")) ;; Mac
+;; (add-to-list 'exec-path (expand-file-name "/usr/lib/go/bin")) ;; Ubuntu
 
 ;; golang mode
 (when (require 'go-mode-load nil t)
@@ -405,19 +422,17 @@
 (autoload 'js2-mode "js2-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 
-;;; Melpa
-(require 'package)
-(add-to-list 'package-archives
-  '("melpa" . "http://melpa.milkbox.net/packages/") t)
-(package-initialize)
-
 ;;; js2-refactor
 (when (require 'js2-refactor nil t)
   (js2r-add-keybindings-with-prefix "C-c m")
   )
 
-;;; Move to the home directory
-(cd "~")
-
 ;;; Set tab width
 (setq default-tab-width 4)
+
+;;; Set Working directory
+(cd "~")
+
+;;; Quickrun
+(when (require 'quickrun nil t)
+  (global-set-key "\C-cr" 'quickrun))
