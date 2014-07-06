@@ -13,6 +13,10 @@
 	token = d90ff930ee441c2d4688877a0f3f6e9f7522dbe7
 [ghi]
 	token = !security find-internet-password -a hkurokawa -s github.com -l 'ghi token' -w
+[ghq]
+	root = ~/git
+	root = ~/hg
+	root = ~/go/src
 [url "ssh://git@github.com/"]
 	insteadOf = https://github.com/
 [alias]
