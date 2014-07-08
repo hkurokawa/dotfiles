@@ -224,4 +224,5 @@ export PATH=$PATH:${ANDROID_SDK}/platform-tools:${ANDROID_SDK}/tools
 
 #########################################
 # Anaconda
-export PATH=$PATH:$HOME/anaconda/bin
+#export PATH=$PATH:$HOME/anaconda/bin
+export PATH=/usr/local/bin:$PATH
