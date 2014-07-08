@@ -151,6 +151,7 @@ alias awssh='row=$(awls); name=$(echo ${row} | cut -f 2); host=$(echo ${row} | c
 # Git and ghi
 alias git-rmbranch='git branch --delete $(git branch --merged master | egrep -v "^\\s*master\\s*$" | peco)'
 alias git-co='git checkout $(git branch -r | peco | sed -e '"'"'s|^.*/\(.*\)$|\1|g'"'"')'
+alias git-ad='git add $(git st -s | cut -d '"'"' '"'"' -f 3 | peco)'
 alias git-dftag='git log $(git tag | peco)...$(git tag | peco) --oneline'
 alias ghi-issno='ghi list | peco | sed -e '"'"'s/^ *\([0-9][0-9]*\).*$/\1/g'"'"
 alias ghi-milno='ghi milestone | peco | sed -e '"'"'s/^ *\([0-9][0-9]*\):.*$/\1/g'"'"
