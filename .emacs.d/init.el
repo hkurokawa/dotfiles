@@ -469,7 +469,7 @@
   ;; (anything-read-string-mode '(string variable command))
   (anything-read-string-mode 1)
   (require 'anything-show-completion)
-  (define-key global-map (kbd "C-x C-f") 'anything-filelist+)
+  (define-key global-map (kbd "C-x f") 'anything-filelist+)
   )
 
 ;;; General format
