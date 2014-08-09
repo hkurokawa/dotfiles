@@ -266,7 +266,7 @@
 
 ;;; Buffer setting
 ;; Enable iswitchb
-(iswitchb-mode 1)
+;; (iswitchb-mode 1)
 ;; Show file content while walking through buffers
 (defadvice iswitchb-exhibit
   (after
@@ -454,6 +454,18 @@
   "Sets the transparency of the frame window. 0=transparent/100=opaque"
   (interactive "nTransparency Value 0 - 100 opaque:")
   (set-frame-parameter (selected-frame) 'alpha value))
+
+;;; Setting for anything
+(defvar org-directory "")
+(when (require 'anything nil t)
+  (require 'anything-config)
+  (require 'anything-match-plugin)
+  (require 'anything-complete)
+  ;; (anything-read-string-mode '(string variable command))
+  (anything-read-string-mode 1)
+  (require 'anything-show-completion)
+  (define-key global-map (kbd "C-x C-f") 'anything-filelist+)
+  )
 
 ;;; General format
 ;; Disable tab format
