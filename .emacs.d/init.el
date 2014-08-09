@@ -30,6 +30,8 @@
 (require 'package)
 (add-to-list 'package-archives
   '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(add-to-list 'package-archives
+  '("marmalade" . "http://marmalade-repo.org/packages/") t)
 (package-initialize)
 
 ;;; Utility
@@ -322,9 +324,9 @@
 
 ;; Set up exec path
 ;; TODO: should use environment variable "GOPATH" instead
-;; (add-to-list 'exec-path (expand-file-name "~/go/bin"))
-;; (add-to-list 'exec-path (expand-file-name "/usr/local/go/bin")) ;; Mac
-;; (add-to-list 'exec-path (expand-file-name "/usr/lib/go/bin")) ;; Ubuntu
+(add-to-list 'exec-path (expand-file-name "~/go/bin"))
+(add-to-list 'exec-path (expand-file-name "/usr/local/go/bin")) ;; Mac
+(add-to-list 'exec-path (expand-file-name "/usr/lib/go/bin")) ;; Ubuntu
 
 ;; golang mode
 (when (require 'go-mode-load nil t)
