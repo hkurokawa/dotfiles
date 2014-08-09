@@ -423,7 +423,7 @@
   )
 ;;; Go flymake
 (require 'go-flymake nil t)
-(require 'flymake-cursor)
+(require 'flymake-cursor nil t)
 
 ;;; js2-mode
 (autoload 'js2-mode "js2-mode" nil t)
