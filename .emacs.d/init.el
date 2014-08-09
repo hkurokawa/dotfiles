@@ -6,15 +6,6 @@
 (defvar darwin-p (eq system-type 'darwin))      ; Mac OS X
 (defvar nt-p (eq system-type 'windows-nt))      ; Windows
 
-;;; Melpa
-;; Though I am not sure, it seems better to place this at the head
-;; Otherwise, `exec-path-from-shell-initialize` does not work
-;; and some warning messages are displayed related to package.el
-(require 'package)
-(add-to-list 'package-archives
-  '("melpa" . "http://melpa.milkbox.net/packages/") t)
-(package-initialize)
-
 ;;; Load path
 ;; set user home directory
 (when oldemacs-p
@@ -31,6 +22,15 @@
 
 ;; add elisp, conf, public_repos to the load path
 (add-to-load-path "elisp")
+
+;;; Melpa
+;; Though I am not sure, it seems better to place this at the head
+;; Otherwise, `exec-path-from-shell-initialize` does not work
+;; and some warning messages are displayed related to package.el
+(require 'package)
+(add-to-list 'package-archives
+  '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(package-initialize)
 
 ;;; Utility
 (defun apply-region-replace (start end func)
