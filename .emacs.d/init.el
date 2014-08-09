@@ -367,6 +367,10 @@
 
       ;; Other
       (setq show-trailing-whitespace t)
+      (setq tab-width 2)
+      (local-set-key (kbd "C-c C-r") 'go-remove-unused-imports)
+      (local-set-key (kbd "C-c i") 'go-goto-imports)
+      (local-set-key (kbd "C-c d") 'godoc)
       ))
   ;; helper function
   (defun go ()
