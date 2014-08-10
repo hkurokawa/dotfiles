@@ -13,6 +13,8 @@
 (require 'package)
 (add-to-list 'package-archives
   '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(add-to-list 'package-archives
+  '("marmalade" . "http://marmalade-repo.org/packages/") t)
 (package-initialize)
 
 ;;; Load path
@@ -264,7 +266,7 @@
 
 ;;; Buffer setting
 ;; Enable iswitchb
-(iswitchb-mode 1)
+;; (iswitchb-mode 1)
 ;; Show file content while walking through buffers
 (defadvice iswitchb-exhibit
   (after
@@ -322,9 +324,9 @@
 
 ;; Set up exec path
 ;; TODO: should use environment variable "GOPATH" instead
-;; (add-to-list 'exec-path (expand-file-name "~/go/bin"))
-;; (add-to-list 'exec-path (expand-file-name "/usr/local/go/bin")) ;; Mac
-;; (add-to-list 'exec-path (expand-file-name "/usr/lib/go/bin")) ;; Ubuntu
+(add-to-list 'exec-path (expand-file-name "~/go/bin"))
+(add-to-list 'exec-path (expand-file-name "/usr/local/go/bin")) ;; Mac
+(add-to-list 'exec-path (expand-file-name "/usr/lib/go/bin")) ;; Ubuntu
 
 ;; golang mode
 (when (require 'go-mode-load nil t)
@@ -365,6 +367,10 @@
 
       ;; Other
       (setq show-trailing-whitespace t)
+      (setq tab-width 2)
+      (local-set-key (kbd "C-c C-r") 'go-remove-unused-imports)
+      (local-set-key (kbd "C-c i") 'go-goto-imports)
+      (local-set-key (kbd "C-c d") 'godoc)
       ))
   ;; helper function
   (defun go ()
@@ -417,6 +423,7 @@
   )
 ;;; Go flymake
 (require 'go-flymake nil t)
+(require 'flymake-cursor nil t)
 
 ;;; js2-mode
 (autoload 'js2-mode "js2-mode" nil t)
@@ -436,3 +443,36 @@
 ;;; Quickrun
 (when (require 'quickrun nil t)
   (global-set-key "\C-cr" 'quickrun))
+
+;;; Util
+(eval-when-compile (require 'cl))
+(defun toggle-transparency ()
+  (interactive)
+  (if (/=
+       (cadr (frame-parameter nil 'alpha))
+       100)
+      (set-frame-parameter nil 'alpha '(100 100))
+    (set-frame-parameter nil 'alpha '(70 50))))
+(global-set-key (kbd "C-c t") 'toggle-transparency)
+;; Set transparency of emacs
+(defun transparency (value)
+  "Sets the transparency of the frame window. 0=transparent/100=opaque"
+  (interactive "nTransparency Value 0 - 100 opaque:")
+  (set-frame-parameter (selected-frame) 'alpha value))
+
+;;; Setting for anything
+(defvar org-directory "")
+(when (require 'anything nil t)
+  (require 'anything-config)
+  (require 'anything-match-plugin)
+  (require 'anything-complete)
+  ;; (anything-read-string-mode '(string variable command))
+  (anything-read-string-mode 1)
+  (require 'anything-show-completion)
+  (define-key global-map (kbd "C-x f") 'anything-filelist+)
+  )
+
+;;; General format
+;; Disable tab format
+(custom-set-variables
+ '(indent-tabs-mode nil))
