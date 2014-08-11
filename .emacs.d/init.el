@@ -414,6 +414,10 @@
 
   ;; run gofmt when saved
   (add-hook 'before-save-hook 'gofmt-before-save)
+
+  ;; Jump to the definition with M-.
+  (add-hook 'go-mode-hook (lambda ()
+                          (local-set-key (kbd "M-.") 'godef-jump)))
   )
 ;;; Go flymake
 (require 'go-flymake nil t)
