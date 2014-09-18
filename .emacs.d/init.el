@@ -11,6 +11,10 @@
 (when oldemacs-p
   (defvar user-emacs-directory "~/.emacs.d/"))
 
+(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+                         ("marmalade" . "http://marmalade-repo.org/packages/")
+                         ("melpa" . "http://melpa.milkbox.net/packages/")))
+
 ;; prepare utility function for load path setting
 (defun add-to-load-path (&rest paths)
   (let (path)
