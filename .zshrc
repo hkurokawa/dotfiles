@@ -222,8 +222,13 @@ export PATH=$PATH:/usr/local/go/bin:${GOPATH//://bin:}/bin
 export ANDROID_HOME=$HOME/adt
 export ANDROID_SDK=$ANDROID_HOME/sdk
 export PATH=$PATH:${ANDROID_SDK}/platform-tools:${ANDROID_SDK}/tools
+export USE_CCACHE=1
 
 #########################################
 # Anaconda
 #export PATH=$PATH:$HOME/anaconda/bin
 export PATH=/usr/local/bin:$PATH
+
+#########################################
+# Utils
+export PATH=$PATH:$HOME/bin
