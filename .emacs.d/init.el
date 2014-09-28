@@ -11,6 +11,10 @@
 (when oldemacs-p
   (defvar user-emacs-directory "~/.emacs.d/"))
 
+(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+                         ("marmalade" . "http://marmalade-repo.org/packages/")
+                         ("melpa" . "http://melpa.milkbox.net/packages/")))
+
 ;; prepare utility function for load path setting
 (defun add-to-load-path (&rest paths)
   (let (path)
@@ -22,17 +26,6 @@
 
 ;; add elisp, conf, public_repos to the load path
 (add-to-load-path "elisp")
-
-;;; Melpa
-;; Though I am not sure, it seems better to place this at the head
-;; Otherwise, `exec-path-from-shell-initialize` does not work
-;; and some warning messages are displayed related to package.el
-(require 'package)
-(add-to-list 'package-archives
-  '("melpa" . "http://melpa.milkbox.net/packages/") t)
-(add-to-list 'package-archives
-  '("marmalade" . "http://marmalade-repo.org/packages/") t)
-(package-initialize)
 
 ;;; Utility
 (defun apply-region-replace (start end func)
@@ -420,6 +413,10 @@
 
   ;; run gofmt when saved
   (add-hook 'before-save-hook 'gofmt-before-save)
+
+  ;; Jump to the definition with M-.
+  (add-hook 'go-mode-hook (lambda ()
+                          (local-set-key (kbd "M-.") 'godef-jump)))
   )
 ;;; Go flymake
 (require 'go-flymake nil t)

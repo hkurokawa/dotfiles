@@ -142,6 +142,7 @@ fi
 alias sudo='sudo '
  
 alias odx='od -x -w16 -A x'
+alias csv2table='for line in $(sed -e '"'"'s/, */ /g'"'"'); do echo ${line}; done'
 
 alias cdir='cd $(find $* | peco)' 
 # AWS
@@ -151,7 +152,8 @@ alias awssh='row=$(awls); name=$(echo ${row} | cut -f 2); host=$(echo ${row} | c
 # Git and ghi
 alias git-rmbranch='git branch --delete $(git branch --merged master | egrep -v "^\\s*master\\s*$" | peco)'
 alias git-co='git checkout $(git branch -r | peco | sed -e '"'"'s|^.*/\(.*\)$|\1|g'"'"')'
-alias git-ad='git add $(git st -s | cut -d '"'"' '"'"' -f 3 | peco)'
+alias git-ls='$(git st -s | cut -d '"'"' '"'"' -f 3 | peco)'
+alias git-ad='git add $(git-ls)'
 alias git-dftag='git log $(git tag | peco)...$(git tag | peco) --oneline'
 alias ghi-issno='ghi list | peco | sed -e '"'"'s/^ *\([0-9][0-9]*\).*$/\1/g'"'"
 alias ghi-milno='ghi milestone | peco | sed -e '"'"'s/^ *\([0-9][0-9]*\):.*$/\1/g'"'"
@@ -232,3 +234,12 @@ export PATH=/usr/local/bin:$PATH
 #########################################
 # Utils
 export PATH=$PATH:$HOME/bin
+case "${OSTYPE}" in
+# Mac(Unix)
+darwin*)
+    export PYTHONPATH=/usr/local/lib/python2.7/site-packages
+    ;;  
+# Linux
+linux*)
+    ;;  
+esac
