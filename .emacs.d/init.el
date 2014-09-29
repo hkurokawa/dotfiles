@@ -472,6 +472,11 @@
   (define-key global-map (kbd "C-x f") 'anything-filelist+)
   )
 
+;;; Setting for Google This
+;; (https://github.com/Bruce-Connor/emacs-google-this)
+(require 'google-this nil t)
+
+
 ;;; General format
 ;; Disable tab format
 (custom-set-variables
