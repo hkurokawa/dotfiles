@@ -425,6 +425,15 @@
 (require 'go-flymake nil t)
 (require 'flymake-cursor nil t)
 
+;;; Go direx
+(when (require 'go-direx nil t)
+  (define-key go-mode-map (kbd "C-c C-j") 'go-direx-pop-to-buffer)
+  (require 'popwin)
+  (setq display-buffer-function 'popwin:display-buffer)
+
+  (push '("^\*go-direx:" :regexp t :position left :width 0.4 :dedicated t :stick t)
+	popwin:special-display-config))
+
 ;;; js2-mode
 (autoload 'js2-mode "js2-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
