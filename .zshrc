@@ -129,6 +129,10 @@ alias lt='ls -latr'
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
+
+alias cd='pushd'
+alias pd='popd'
+alias ch='cd $HOME'
  
 alias mkdir='mkdir -p'
  
