@@ -495,6 +495,11 @@
 ;; (https://github.com/Bruce-Connor/emacs-google-this)
 (require 'google-this nil t)
 
+;;; Twittering mode
+(when (require 'twittering-mode nil t)
+  (twittering-enable-unread-status-notifier)
+  (setq twittering-display-remaining t)
+  )
 
 ;;; General format
 ;; Disable tab format
