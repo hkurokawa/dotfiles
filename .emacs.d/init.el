@@ -498,6 +498,7 @@
 ;;; Twittering mode
 (when (require 'twittering-mode nil t)
   (setq twittering-use-master-password t)
+  (setq twittering-icon-mode t)
   (twittering-enable-unread-status-notifier)
   (setq twittering-display-remaining t)
   (setq twittering-status-format "%i %S (%s),  %@:\n%FILL{  %T // from %f%L%r%R}")
