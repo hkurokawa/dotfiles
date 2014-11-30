@@ -225,10 +225,10 @@ export PATH=$PATH:/usr/local/go/bin:${GOPATH//://bin:}/bin
 
 #########################################
 # Android
-export ANDROID_HOME=$HOME/adt
 export ANDROID_SDK=$HOME/android-sdk
 export ANDROID_NDK=$HOME/android-ndk
-export PATH=$PATH:${ANDROID_SDK}/platform-tools:${ANDROID_SDK}/tools
+export ANDROID_HOME=$ANDROID_SDK
+export PATH=$PATH:${ANDROID_SDK}/platform-tools:${ANDROID_SDK}/tools:${ANDROID_NDK}
 export USE_CCACHE=1
 
 #########################################
