@@ -500,6 +500,7 @@
   (setq twittering-use-master-password t)
   (twittering-enable-unread-status-notifier)
   (setq twittering-display-remaining t)
+  (setq twittering-icon-mode t)
   )
 
 ;;; General format
