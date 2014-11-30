@@ -499,6 +499,9 @@
 (when (require 'twittering-mode nil t)
   (twittering-enable-unread-status-notifier)
   (setq twittering-display-remaining t)
+  (setq twittering-status-format "%i %S (%s),  %@:\n%FILL{  %T // from %f%L%r%R}")
+  (add-hook 'twittering-mode-hook
+           (define-key twittering-mode-map (read-kbd-macro "F") 'twittering-favorite))
   )
 
 ;;; General format
