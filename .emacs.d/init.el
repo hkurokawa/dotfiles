@@ -140,6 +140,16 @@
 ;; make search case insensitive by default
 (setq-default case-fold-search t)
 
+;; Open current file with the default application
+(defun gnome-open-file ()
+  "Open the current buffer with the default application"
+  (interactive)
+  (let* ((file (buffer-file-name)))
+    (message "Opening %s..." file)
+    (call-process "gnome-open" nil 0 nil file)
+    (message "Opening %s done" file)
+))
+
 ;;; Programming
 ;; Load jka-compr to look for a function with find-tag in a compressed EmacsLisp file
 (load "jka-compr")
@@ -485,6 +495,16 @@
 ;; (https://github.com/Bruce-Connor/emacs-google-this)
 (require 'google-this nil t)
 
+;;; Twittering mode
+(when (require 'twittering-mode nil t)
+  (setq twittering-use-master-password t)
+  (setq twittering-icon-mode t)
+  (twittering-enable-unread-status-notifier)
+  (setq twittering-display-remaining t)
+  (setq twittering-status-format "%i %S (%s),  %@:\n%FILL{  %T // from %f%L%r%R}")
+  (add-hook 'twittering-mode-hook
+           (define-key twittering-mode-map (read-kbd-macro "F") 'twittering-favorite))
+  )
 
 ;;; General format
 ;; Disable tab format
