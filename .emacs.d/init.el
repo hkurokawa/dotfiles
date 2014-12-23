@@ -495,6 +495,9 @@
 ;; (https://github.com/Bruce-Connor/emacs-google-this)
 (require 'google-this nil t)
 
+(when (require 'expand-region nil t)
+  (global-set-key (kbd "C-M-@") 'er/expand-region))
+
 ;;; Twittering mode
 (when (require 'twittering-mode nil t)
   ;; Use master password to avoid input one-time-password every time I launch emacs.
