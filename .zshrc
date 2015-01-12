@@ -150,7 +150,7 @@ alias csv2table='for line in $(sed -e '"'"'s/, */ /g'"'"'); do echo ${line}; don
 
 alias cdir='cd $(find $* | peco)' 
 # AWS
-alias awls="aws ec2 describe-instances --output text --query 'Reservations[*].Instances[*].[State.Name, Tags[?Key==\`Name\`].Value | [0], PublicDnsName]' | sed -e 's/^running/R/g' | sed -e 's/^stopped/S/g' | peco"
+alias awls="aws ec2 describe-instances --output text --query 'Reservations[*].Instances[*].[State.Name, Tags[?Key==\`Name\`].Value | [1], PublicDnsName]' | sed -e 's/^running/R/g' | sed -e 's/^stopped/S/g' | peco"
 alias awls-vpc="aws ec2 describe-instances --output text --region ap-southeast-1 --filter 'Name=vpc-id,Values=vpc-457e9320' --query 'Reservations[*].Instances[*].[State.Name, Tags[?Key==\`Name\`].Value | [0], PrivateIpAddress]' | sed -e 's/^running/R/g' | sed -e 's/^stopped/S/g' | peco"
 alias awssh='row=$(awls); name=$(echo ${row} | cut -f 2); host=$(echo ${row} | cut -f 3); echo "...ssh ${name} (${host})"; ssh ${host}'
 alias awssh-vpc='row=$(awls-vpc); name=$(echo ${row} | cut -f 2); host=$(echo ${row} | cut -f 3); echo "...ssh ${name} (${host})"; ssh ${host}'
@@ -165,6 +165,9 @@ alias find-code='find . -type f \( -name "*.java" -o -name "*.go" -o -name "*.py
 alias git-log-source='git log -p $(find-code | peco)'
 alias ghi-issno='ghi list | peco | sed -e '"'"'s/^ *\([0-9][0-9]*\).*$/\1/g'"'"
 alias ghi-milno='ghi milestone | peco | sed -e '"'"'s/^ *\([0-9][0-9]*\):.*$/\1/g'"'"
+
+# ghq
+alias cr='cd $(ghq list -p | peco)'
 
 # グローバルエイリアス
 alias -g L='| less'
