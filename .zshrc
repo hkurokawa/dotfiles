@@ -167,6 +167,9 @@ alias git-log-source='git log -p $(find-code | peco)'
 alias ghi-issno='ghi list | peco | sed -e '"'"'s/^ *\([0-9][0-9]*\).*$/\1/g'"'"
 alias ghi-milno='ghi milestone | peco | sed -e '"'"'s/^ *\([0-9][0-9]*\):.*$/\1/g'"'"
 
+# ghq
+alias cr='cd $(ghq list -p | peco)'
+
 # グローバルエイリアス
 alias -g L='| less'
 alias -g G='| grep'
