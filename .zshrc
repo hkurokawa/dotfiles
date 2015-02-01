@@ -158,7 +158,7 @@ alias awssh-vpc='row=$(awls-vpc); name=$(echo ${row} | cut -f 2); host=$(echo ${
 
 # Git and ghi
 alias git-rmbranch='git branch --delete $(git branch --merged master | egrep -v "^\\s*master\\s*$" | peco)'
-alias git-co='git checkout $(git branch -r | peco | sed -e '"'"'s|^.*/\(.*\)$|\1|g'"'"')'
+alias git-co='git checkout $(git branch -r | peco | sed -e '"'"'s|^[^/]*/\(.*\)$|\1|g'"'"')'
 alias git-ls='$(git st -s | cut -d '"'"' '"'"' -f 3 | peco)'
 alias git-ad='git add $(git-ls)'
 alias git-dftag='git log $(git tag | peco)...$(git tag | peco) --oneline'
