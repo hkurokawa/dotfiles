@@ -260,6 +260,8 @@
 ;; Open the file with gnome-open
 (add-hook 'dired-load-hook (function (lambda ()
     (define-key dired-mode-map "z" 'dired-gnome-open-file)
+    (define-key dired-mode-map (kbd "C-s") 'dired-isearch-filenames)
+    (define-key dired-mode-map (kbd "C-M-s") 'dired-isearch-filenames-regexp)
 )))
 (defun dired-gnome-open-file ()
   "In dired, open the file named on this line."
