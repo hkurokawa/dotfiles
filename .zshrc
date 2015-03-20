@@ -194,16 +194,6 @@ elif which putclip >/dev/null 2>&1 ; then
 fi
 
 ########################################
-# Move to the parent directory with `^'
-function cdup() {
-echo
-cd ..
-zle reset-prompt
-}
-zle -N cdup
-bindkey '\^' cdup 
- 
-########################################
 # OS 別の設定
 case ${OSTYPE} in
     darwin*)
