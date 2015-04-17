@@ -9,8 +9,14 @@ export LANG=ja_JP.UTF-8
 autoload -Uz colors
 colors
  
-# emacs 風キーバインドにする
-bindkey -e
+# vi 風キーバインドにする
+bindkey -v
+bindkey '^P' up-history
+bindkey '^N' down-history
+bindkey '^?' backward-delete-char
+bindkey '^h' backward-delete-char
+bindkey '^w' backward-kill-word
+bindkey '^r' history-incremental-search-backward
  
 # ヒストリの設定
 HISTFILE=~/.zsh_history
@@ -187,16 +193,6 @@ elif which putclip >/dev/null 2>&1 ; then
     alias -g C='| putclip'
 fi
 
-########################################
-# Move to the parent directory with `^'
-function cdup() {
-echo
-cd ..
-zle reset-prompt
-}
-zle -N cdup
-bindkey '\^' cdup 
- 
 ########################################
 # OS 別の設定
 case ${OSTYPE} in
