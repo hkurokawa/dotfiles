@@ -163,15 +163,17 @@ alias awsshi='row=$(awls); name=$(echo ${row} | cut -f 2); host=$(echo ${row} | 
 alias awssh-vpc='row=$(awls-vpc); name=$(echo ${row} | cut -f 2); host=$(echo ${row} | cut -f 3); echo "...ssh ${name} (${host})"; ssh ${host}'
 
 # Git and ghi
-alias git-rmbranch='git branch --delete $(git branch --merged master | egrep -v "^\\s*master\\s*$" | peco)'
-alias git-co='git checkout $(git branch -r | peco | sed -e '"'"'s|^[^/]*/\(.*\)$|\1|g'"'"')'
-alias git-ls='$(git st -s | cut -d '"'"' '"'"' -f 3 | peco)'
-alias git-ad='git add $(git-ls)'
-alias git-dftag='git log $(git tag | peco)...$(git tag | peco) --oneline'
+alias g=git
+alias g-rmbranch='git branch --delete $(git branch --merged master | egrep -v "^\\s*master\\s*$" | peco)'
+alias g-co='git checkout $(git branch -r | peco | sed -e '"'"'s|^[^/]*/\(.*\)$|\1|g'"'"')'
+alias g-ls='$(git st -s | cut -d '"'"' '"'"' -f 3 | peco)'
+alias g-ad='git add $(git-ls)'
+alias g-dftag='git log $(git tag | peco)...$(git tag | peco) --oneline'
 alias find-code='find . -type f \( -name "*.java" -o -name "*.go" -o -name "*.py" -o -name "*.c" \)'
-alias git-log-source='git log -p $(find-code | peco)'
+alias g-log-source='git log -p $(find-code | peco)'
 alias ghi-issno='ghi list | peco | sed -e '"'"'s/^ *\([0-9][0-9]*\).*$/\1/g'"'"
 alias ghi-milno='ghi milestone | peco | sed -e '"'"'s/^ *\([0-9][0-9]*\):.*$/\1/g'"'"
+eval $(hub alias -s)
 
 # ghq
 alias cr='cd $(ghq list -p | peco)'
