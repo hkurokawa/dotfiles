@@ -12,11 +12,11 @@
   (defvar user-emacs-directory "~/.emacs.d/"))
 
 
-(require 'package)
-(package-initialize)
-(setq package-archives (append package-archives
-                               '(("melpa" . "http://melpa.milkbox.net/packages/")
-                                 ("marmalade" . "http://marmalade-repo.org/packages/"))))
+(when (>= emacs-major-version 24)
+  (require 'package)
+  (package-initialize)
+  (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+  )
 
 ;; prepare utility function for load path setting
 (defun add-to-load-path (&rest paths)
