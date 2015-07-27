@@ -182,6 +182,11 @@ alias cr='cd $(ghq list -p | peco)'
 alias -g L='| less'
 alias -g G='| grep'
  
+# Setup for qfc (https://github.com/pindexis/qfc)
+[[ -s "$HOME/.qfc/bin/qfc.sh" ]] && source "$HOME/.qfc/bin/qfc.sh"
+qfc_quick_command 'cd' '\C-b' 'cd $0'
+qfc_quick_command 'vi' '\C-l' 'vi $0'
+
 # C で標準出力をクリップボードにコピーする
 # mollifier delta blog : http://mollifier.hatenablog.com/entry/20100317/p1
 if which pbcopy >/dev/null 2>&1 ; then
