@@ -5,6 +5,7 @@
 ;;; Platform predicates
 (defvar darwin-p (eq system-type 'darwin))      ; Mac OS X
 (defvar nt-p (eq system-type 'windows-nt))      ; Windows
+(defvar linux-p (eq system-type 'gnu/linux))
 
 ;;; Load path
 ;; set user home directory
@@ -86,6 +87,21 @@
   (when (require 'exec-path-from-shell nil t)
     (exec-path-from-shell-initialize))
  )
+
+;;; Settings for Ubuntu
+(when linux-p
+  (message "Loading settings for Linux...")
+
+  ;; Use Ricty font
+  ;; ref. http://save.sys.t.u-tokyo.ac.jp/~yusa/fonts/ricty.html
+  ;; How to configure is as follows.
+  ;; ref. http://www.gfd-dennou.org/member/uwabami/cc-env/emacs/frame_config.html
+  (add-to-list 'default-frame-alist '(font . "ricty-13.5"))
+  (custom-set-faces
+   '(variable-pitch ((t (:family "Ricty"))))
+   '(fixed-pitch ((t (:family "Ricty"))))
+   )
+  )
 
 ;;; Window setting
 ;; maximize the window
