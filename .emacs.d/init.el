@@ -520,16 +520,19 @@ Including indent-buffer, which should not be called automatically on save."
   (define-key zencoding-mode-keymap (kbd "C-j") nil))
 
 ;;; Setting for anything
-(defvar org-directory "")
-(when (require 'anything nil t)
-  (require 'anything-config)
-  (require 'anything-match-plugin)
-  (require 'anything-complete)
-  ;; (anything-read-string-mode '(string variable command))
-  (anything-read-string-mode 1)
-  (require 'anything-show-completion)
-  (define-key global-map (kbd "C-x f") 'anything-filelist+)
-  )
+;; (defvar org-directory "")
+;; (when (require 'anything nil t)
+;;   (require 'anything-config)
+;;   (require 'anything-match-plugin)
+;;   (require 'anything-complete)
+;;   ;; (anything-read-string-mode '(string variable command))
+;;   (anything-read-string-mode 1)
+;;   (require 'anything-show-completion)
+;;   (define-key global-map (kbd "C-x f") 'anything-filelist+)
+;;   )
+
+;;; Setting for Helm
+(when (require 'helm-config nil t))
 
 ;;; Setting for Google This
 ;; (https://github.com/Bruce-Connor/emacs-google-this)

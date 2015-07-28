@@ -3,4 +3,5 @@
 .emacs.d/tramp
 .emacs.d/.mc-lists.el
 .emacs.d/elpa/*
+.emacs.d/url
 .byobu/.ssh-agent
