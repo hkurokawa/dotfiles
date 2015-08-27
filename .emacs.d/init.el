@@ -194,6 +194,37 @@
 ;; Load xscheme.el for MIT-Scheme
 ;; (load "xscheme")
 
+;; autoinsert
+(when (require 'autoinsert nil t)
+  ;; replace function
+  (defvar template-replacements-alists
+    '(("%file%" . (lambda () (file-name-nondirectory (buffer-file-name))))
+      ("%file-without-ext%" . (lambda () 
+                                (setq file-without-ext (file-name-sans-extension
+                                                        (file-name-nondirectory (buffer-file-name))))))
+      ("%name%" . user-full-name)
+      ("%mail%" . (lambda () (identity user-mail-address)))
+      ))
+  (defun template-replace ()
+    (time-stamp)
+    (mapc #'(lambda(c)
+              (progn
+                (goto-char (point-min))
+                (replace-string (car c) (funcall (cdr c)) nil)))
+          template-replacements-alists)
+    (goto-char (point-max))
+    (message "done."))
+
+  (add-hook 'find-file-not-found-hooks 'auto-insert)
+  ;; template files
+  (setq auto-insert-directory "~/.emacs.d/insert/")
+  ;; map an extenstion to a template file
+  (setq auto-insert-alist
+        (append '(
+                  ("\\.py$" . ["template.py" template-replace])
+                  ) auto-insert-alist))
+  (add-hook 'find-file-hooks 'auto-insert))
+
 ;;; Evernote client
 ;; evernote-modemacs
 (when (require 'evernote-mode nil t)
