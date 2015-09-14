@@ -153,6 +153,7 @@ alias sudo='sudo '
  
 alias odx='od -x -w16 -A x'
 alias csv2table='for line in $(sed -e '"'"'s/, */ /g'"'"'); do echo ${line}; done'
+alias cl=clear
 
 alias cdir='cd $(find $* | peco)' 
 # AWS
