@@ -229,7 +229,7 @@
 ;; evernote-modemacs
 (when (require 'evernote-mode nil t)
   (setq evernote-enml-formatter-command '("w3m" "-dump" "-I" "UTF8" "-O" "UTF8")) ; optional
-  (setq evernote-developer-token "S=s49:U=4f8f15:E=14b8f58a1c2:C=14437a775c6:P=1cd:A=en-devtoken:V=2:H=eed8e46323ace28685f7a657fb121953")
+  (setq evernote-developer-token "S=s49:U=4f8f15:E=1568d5e5073:C=14f35ad21d8:P=1cd:A=en-devtoken:V=2:H=fd5b13848fe663d9de885124144f84fa")
   (global-set-key "\C-cec" 'evernote-create-note)
   (global-set-key "\C-ceo" 'evernote-open-note)
   (global-set-key "\C-ces" 'evernote-search-notes)
