@@ -185,8 +185,10 @@ alias -g G='| grep'
  
 # Setup for qfc (https://github.com/pindexis/qfc)
 [[ -s "$HOME/.qfc/bin/qfc.sh" ]] && source "$HOME/.qfc/bin/qfc.sh"
-qfc_quick_command 'cd' '\C-b' 'cd $0'
-qfc_quick_command 'vi' '\C-l' 'vi $0'
+if [[ -z $(which qfc_quick_command) ]]; then
+  qfc_quick_command 'cd' '\C-b' 'cd $0'
+  qfc_quick_command 'vi' '\C-l' 'vi $0'
+fi
 
 # C で標準出力をクリップボードにコピーする
 # mollifier delta blog : http://mollifier.hatenablog.com/entry/20100317/p1
@@ -262,9 +264,9 @@ linux*)
 esac
 
 # The next line updates PATH for the Google Cloud SDK.
-source "$HOME/google-cloud-sdk/path.zsh.inc"
+[[ -s "$HOME/google-cloud-sdk/path.zsh.inc" ]] && source "$HOME/google-cloud-sdk/path.zsh.inc"
 
 # The next line enables shell command completion for gcloud.
-source "$HOME/google-cloud-sdk/completion.zsh.inc"
+[[ -s "$HOME/google-cloud-sdk/completion.zsh.inc" ]] && source "$HOME/google-cloud-sdk/completion.zsh.inc"
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
