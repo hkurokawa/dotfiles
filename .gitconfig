@@ -1,6 +1,6 @@
 [user]
 	name = hkurokawa
-	email = hiroshi.kurokawa@gunosy.com
+	email = hirosh.kurokawa@gmail.com
 [color]
 	ui = true
 [push]
@@ -8,9 +8,6 @@
 [filter "media"]
 	clean = git-media-clean %f
 	smudge = git-media-smudge %f
-[github]
-	user = hkurokawa
-	token = d90ff930ee441c2d4688877a0f3f6e9f7522dbe7
 [ghi]
 	token = !security find-internet-password -a hkurokawa -s github.com -l 'ghi token' -w
 [ghq]
