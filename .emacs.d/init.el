@@ -589,6 +589,17 @@ Including indent-buffer, which should not be called automatically on save."
            (define-key twittering-mode-map (read-kbd-macro "F") 'twittering-favorite))
   )
 
+;;; restclient-mode
+(when (require 'restclient nil t)
+  (add-to-list 'auto-mode-alist '("\\.restclient$" . restclient-mode))
+  (when (require 'jq-mode nil t)
+    (add-hook 'restclient-response-loaded-hook 'jq-mode)))
+
+;;; jq-mode
+(when (require 'jq-mode nil t)
+  (add-to-list 'auto-mode-alist '("\\.jq$" . jq-mode))
+  (custom-set-variables '(jq-interactive-default-options "")))
+
 ;;; General format
 ;; Disable tab format
 (custom-set-variables
