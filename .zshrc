@@ -168,12 +168,13 @@ alias g=git
 alias g-rmbranch='git branch --delete $(git branch --merged master | egrep -v "^\\s*master\\s*$" | peco)'
 alias g-co='git checkout $(git branch -r | peco | sed -e '"'"'s|^[^/]*/\(.*\)$|\1|g'"'"')'
 alias g-ls='$(git st -s | cut -d '"'"' '"'"' -f 3 | peco)'
-alias g-ad='git add $(git-ls)'
+alias g-ad='git add $(g-ls)'
 alias g-dftag='git log $(git tag | peco)...$(git tag | peco) --oneline'
 alias find-code='find . -type f \( -name "*.java" -o -name "*.go" -o -name "*.py" -o -name "*.c" \)'
 alias g-log-source='git log -p $(find-code | peco)'
 alias ghi-issno='ghi list | peco | sed -e '"'"'s/^ *\([0-9][0-9]*\).*$/\1/g'"'"
 alias ghi-milno='ghi milestone | peco | sed -e '"'"'s/^ *\([0-9][0-9]*\):.*$/\1/g'"'"
+alias g-delete-merged='git branch --merged | grep -v "\*" | grep -v master | grep -v dev | xargs -n 1 git branch -d'
 eval $(hub alias -s)
 
 # ghq
