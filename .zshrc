@@ -164,6 +164,13 @@ alias awsshi='row=$(awls); name=$(echo ${row} | cut -f 2); host=$(echo ${row} | 
 alias awssh-vpc='row=$(awls-vpc); name=$(echo ${row} | cut -f 2); host=$(echo ${row} | cut -f 3); echo "...ssh ${name} (${host})"; ssh ${host}'
 
 # Git and ghi
+if [ ! -z $(which brew) ]; then
+    fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
+
+    autoload -U compinit
+    compinit -u
+fi
+
 alias g=git
 alias g-rmbranch='git branch --delete $(git branch --merged master | egrep -v "^\\s*master\\s*$" | peco)'
 alias g-co='git checkout $(git branch -a | peco | sed -e '"'"'s|^[^/]*/\(.*\)$|\1|g'"'"')'
