@@ -167,6 +167,7 @@ alias awssh-vpc='row=$(awls-vpc); name=$(echo ${row} | cut -f 2); host=$(echo ${
 alias lsavds="android list avds | grep -oe 'Name: [a-zA-Z0-9_]*' | sed -e 's/Name: //' | peco"
 alias em='avd=$(lsavds); echo "..running emulator -avd ${avd}"; emulator -avd ${avd}'
 alias em-prox="em -http-proxy http://$(ipconfig getifaddr en0):8888"
+alias adb-pkill='adb shell kill $(adb shell ps | peco | tr -s '"'"' '"'"' '"'"'\t'"'"' | cut -f 2)'
 
 # Git and ghi
 if [ ! -z $(which brew) ]; then
