@@ -166,6 +166,14 @@
     (call-process "gnome-open" nil 0 nil file)
     (message "Opening %s done" file)
 ))
+(defun mac-open-file ()
+  "Open the current buffer with the default application"
+  (interactive)
+  (let* ((file (buffer-file-name)))
+    (message "Opening %s..." file)
+    (call-process "open" nil 0 nil file)
+    (message "Opening %s done" file)
+))
 
 ;;; Programming
 ;; Load jka-compr to look for a function with find-tag in a compressed EmacsLisp file
