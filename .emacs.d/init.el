@@ -290,7 +290,7 @@
   ;; ;; SKK server settings
   ;; (setq skk-server-host "localhost")
   ;; Local large dictionary
-  (setq skk-large-jisyo "/usr/share/skk/SKK-JISYO.L")
+  (setq skk-large-jisyo (if darwin-p "~/Library/Application Support/AquaSKK/SKK-JISYO.L" "/usr/share/skk/SKK-JISYO.L"))
   ;; Enable dynamic completion
   (setq skk-dcomp-activate t)
   ;; Show annotations
