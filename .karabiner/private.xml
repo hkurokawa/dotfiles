@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<root>
+  <devicevendordef>
+    <vendorname>Logicool</vendorname>
+    <vendorid>0x046d</vendorid>
+  </devicevendordef>
+  <deviceproductdef>
+    <productname>M570</productname>
+    <productid>0xc52b</productid>
+  </deviceproductdef>
+  <item>
+    <name>Reverse mouse scroll in Logical M570 wireless trackball</name>
+    <identifier>private.remap.reverse_mouse_scroll</identifier>
+    <device_only>DeviceVendor::Logicool, DeviceProduct::M570</device_only>
+    <autogen>__FlipScrollWheel__ Option::FLIPSCROLLWHEEL_VERTICAL</autogen>
+  </item>
+  <item>
+    <name>Button5 to Command+] (Forward)</name>
+    <identifier>private.remap.pointing_button5_to_command_bracket_right</identifier>
+    <device_only>DeviceVendor::Logicool, DeviceProduct::M570</device_only>
+    <autogen>__KeyToKey__ PointingButton::BUTTON5, KeyCode::BRACKET_RIGHT, ModifierFlag::COMMAND_L</autogen>
+  </item>
+  <item>
+    <name>Button4 to Command+[ (Back)</name>
+    <identifier>private.remap.pointing_button4_to_command_bracket_left</identifier>
+    <device_only>DeviceVendor::Logicool, DeviceProduct::M570</device_only>          
+    <autogen>__KeyToKey__ PointingButton::BUTTON4, KeyCode::BRACKET_LEFT, ModifierFlag::COMMAND_L</autogen>
+  </item>
+</root>
