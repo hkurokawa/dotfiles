@@ -5,3 +5,4 @@
 .emacs.d/elpa/*
 .emacs.d/url
 .byobu/.ssh-agent
+.DS_Store
