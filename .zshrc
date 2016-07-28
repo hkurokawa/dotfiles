@@ -271,6 +271,12 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 export PATH=/usr/local/bin:$PATH
 
 #########################################
+# rbenv
+if [ ! -z "$(which rbenv)" ]; then
+    eval "$(rbenv init -)"
+fi
+
+#########################################
 # Utils
 export PATH=$PATH:$HOME/bin
 case "${OSTYPE}" in
