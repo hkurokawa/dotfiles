@@ -163,8 +163,19 @@ alias awssh='row=$(awls); name=$(echo ${row} | cut -f 2); host=$(echo ${row} | c
 alias awsshi='row=$(awls); name=$(echo ${row} | cut -f 2); host=$(echo ${row} | cut -f 4); echo "...ssh ${name} (${host})"; ssh ${host}'
 alias awssh-vpc='row=$(awls-vpc); name=$(echo ${row} | cut -f 2); host=$(echo ${row} | cut -f 3); echo "...ssh ${name} (${host})"; ssh ${host}'
 
+# Android
+alias lsavds="android list avds | grep -oe 'Name: [a-zA-Z0-9_]*' | sed -e 's/Name: //' | peco"
+alias em='avd=$(lsavds); echo "..running emulator -avd ${avd}"; emulator -avd ${avd}'
+alias em-prox="em -http-proxy http://$(ipconfig getifaddr en0):8888"
+alias adb-pkill='adb shell kill $(adb shell ps | peco | tr -s '"'"' '"'"' '"'"'\t'"'"' | cut -f 2)'
+
 # Git and ghi
-if [ -d ~/.zsh/completion ]; then
+if [ ! -z $(which brew) ]; then
+    fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
+
+    autoload -U compinit
+    compinit -u
+elif [ -d ~/.zsh/completion ]; then
     fpath=(~/.zsh/completion $fpath)
 
     autoload -U compinit
@@ -173,14 +184,15 @@ fi
 
 alias g=git
 alias g-rmbranch='git branch --delete $(git branch --merged master | egrep -v "^\\s*master\\s*$" | peco)'
-alias g-co='git checkout $(git branch -r | peco | sed -e '"'"'s|^[^/]*/\(.*\)$|\1|g'"'"')'
+alias g-co='git checkout $(git branch -a | peco | sed -e '"'"'s|^remotes/[^/]*/\(.*\)$|\1|g'"'"')'
 alias g-ls='$(git st -s | cut -d '"'"' '"'"' -f 3 | peco)'
-alias g-ad='git add $(git-ls)'
+alias g-ad='git add $(g-ls)'
 alias g-dftag='git log $(git tag | peco)...$(git tag | peco) --oneline'
 alias find-code='find . -type f \( -name "*.java" -o -name "*.go" -o -name "*.py" -o -name "*.c" \)'
 alias g-log-source='git log -p $(find-code | peco)'
 alias ghi-issno='ghi list | peco | sed -e '"'"'s/^ *\([0-9][0-9]*\).*$/\1/g'"'"
 alias ghi-milno='ghi milestone | peco | sed -e '"'"'s/^ *\([0-9][0-9]*\):.*$/\1/g'"'"
+alias g-delete-merged='git branch --merged | grep -v "\*" | grep -v master | grep -v dev | xargs -n 1 git branch -d'
 eval $(hub alias -s)
 
 # ghq
@@ -256,6 +268,12 @@ export USE_CCACHE=1
 # Anaconda
 #export PATH=$PATH:$HOME/anaconda/bin
 export PATH=/usr/local/bin:$PATH
+
+#########################################
+# rbenv
+if [ ! -z "$(which rbenv)" ]; then
+    eval "$(rbenv init -)"
+fi
 
 #########################################
 # Utils
