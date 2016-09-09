@@ -27,6 +27,6 @@
 [core]
 	autocrlf = input
 [merge]
-	ff = false
+	ff = true
 [tig "bind"]
 	status = S !?git stash save --keep-index %(prompt)
