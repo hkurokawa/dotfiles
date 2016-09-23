@@ -37,6 +37,10 @@
       <appname>Android Studio</appname>
       <equal>com.google.android.studio</equal>
     </appdef>
+    <appdef>
+      <appname>RubyMine</appname>
+      <equal>com.jetbrains.rubymine</equal>
+    </appdef>
     <list>
       <item>
         <name>Ctrl-J to Kana on Apple Terminal/iTerm2</name>
@@ -62,6 +66,16 @@
         <name>Ctrl-J to Kana on Android Studio</name>
         <only>Android Studio</only>
         <identifier>private.androidstudio.ctrl_j_to_kana</identifier>
+        <autogen>
+          __KeyToKey__
+          KeyCode::J, ModifierFlag::CONTROL_L,
+          KeyCode::JIS_KANA
+        </autogen>
+      </item>
+      <item>
+        <name>Ctrl-J to Kana on RubyMine</name>
+        <only>RubyMine</only>
+        <identifier>private.rubymine.ctrl_j_to_kana</identifier>
         <autogen>
           __KeyToKey__
           KeyCode::J, ModifierFlag::CONTROL_L,
