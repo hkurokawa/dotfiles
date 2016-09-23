@@ -27,6 +27,8 @@
 [core]
 	autocrlf = input
 [merge]
-	ff = false
+	ff = true
 [tig "bind"]
 	status = S !?git stash save --keep-index %(prompt)
+[pr-release]
+	token = 979ab6690b2a5231a268db5d31ba769cf5299df5
