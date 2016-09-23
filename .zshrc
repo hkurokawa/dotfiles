@@ -273,6 +273,7 @@ export PATH=/usr/local/bin:$PATH
 #########################################
 # rbenv
 if [ ! -z "$(which rbenv)" ]; then
+    export RBENV_ROOT=${HOME}/.rbenv
     eval "$(rbenv init -)"
 fi
 
