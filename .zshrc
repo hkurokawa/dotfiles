@@ -176,6 +176,11 @@ if [ ! -z $(which brew) ]; then
 
     autoload -U compinit
     compinit -u
+elif [ -d ~/.zsh/completion ]; then
+    fpath=(~/.zsh/completion $fpath)
+
+    autoload -U compinit
+    compinit -u
 fi
 
 alias g=git
