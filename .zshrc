@@ -168,10 +168,16 @@ alias lsavds="android list avds | grep -oe 'Name: [a-zA-Z0-9_]*' | sed -e 's/Nam
 alias em='avd=$(lsavds); echo "..running emulator -avd ${avd}"; emulator -avd ${avd}'
 alias em-prox="em -http-proxy http://$(ipconfig getifaddr en0):8888"
 alias adb-pkill='adb shell kill $(adb shell ps | peco | tr -s '"'"' '"'"' '"'"'\t'"'"' | cut -f 2)'
+alias lspkgs="adb shell dumpsys activity | grep -B 1 \"Run #[0-9]*:\" | grep -oe '\(I\|A\)=[a-z.]*' | sed -e 's/^.*=//' | peco"
 
 # Git and ghi
 if [ ! -z $(which brew) ]; then
     fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
+
+    autoload -U compinit
+    compinit -u
+elif [ -d ~/.zsh/completion ]; then
+    fpath=(~/.zsh/completion $fpath)
 
     autoload -U compinit
     compinit -u
@@ -260,6 +266,11 @@ export PATH=$PATH:${ANDROID_SDK}/platform-tools:${ANDROID_SDK}/tools:${ANDROID_N
 export USE_CCACHE=1
 
 #########################################
+# rbenv
+export RBENV_ROOT=/usr/local/var/rbenv
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+#########################################
 # Anaconda
 #export PATH=$PATH:$HOME/anaconda/bin
 export PATH=/usr/local/bin:$PATH
@@ -267,6 +278,7 @@ export PATH=/usr/local/bin:$PATH
 #########################################
 # rbenv
 if [ ! -z "$(which rbenv)" ]; then
+    export RBENV_ROOT=${HOME}/.rbenv
     eval "$(rbenv init -)"
 fi
 
