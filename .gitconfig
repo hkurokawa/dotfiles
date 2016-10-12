@@ -30,5 +30,3 @@
 	ff = true
 [tig "bind"]
 	status = S !?git stash save --keep-index %(prompt)
-[pr-release]
-	token = 986c6f0110de39e3a94ef62065dab0850387bf13
