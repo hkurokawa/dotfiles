@@ -84,4 +84,5 @@
       </item>
     </list>
   </item>
+  <include path="/Library/Input Methods/AquaSKK.app/Contents/Resources/karabiner.xml" />
 </root>
