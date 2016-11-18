@@ -83,15 +83,25 @@ setopt no_beep
  
 # フローコントロールを無効にする
 setopt no_flow_control
- 
+
 # '#' 以降をコメントとして扱う
 setopt interactive_comments
  
 # ディレクトリ名だけでcdする
 setopt auto_cd
- 
+
+# コマンドのスペルミスを自動補正
+setopt correct
+
+# ファイルを間違えて上書きしない
+setopt noclobber
+
+# シングルクォート内のシングルクォートをダブルクォートで代用できるようにする
+setopt rcquotes
+
 # cd したら自動的にpushdする
 setopt auto_pushd
+
 # 重複したディレクトリを追加しない
 setopt pushd_ignore_dups
  
