@@ -30,3 +30,5 @@
 	ff = true
 [tig "bind"]
 	status = S !?git stash save --keep-index %(prompt)
+[github]
+	user = hkurokawa
