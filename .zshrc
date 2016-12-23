@@ -233,6 +233,32 @@ elif which putclip >/dev/null 2>&1 ; then
     alias -g C='| putclip'
 fi
 
+#########################################
+# Functions
+copy_structure() {
+    if [ $# -ne 3 ]; then
+        echo "Usage: $0 src dest filename" 1>&2
+        return 1
+    fi
+    local src=$1
+    local dst=$2
+    local name=$3
+
+    if [ ! -d "${src}" ]; then
+        echo "No such dir: ${src}" 1>&2
+        return 1
+    fi
+    if [ ! -d "${dst}" ]; then
+        echo "No such dir: ${dst}" 1>&2
+        return 1
+    fi
+    if [ -z "${name}" ]; then
+        echo "Empty name: ${name}"
+        return 1
+    fi
+    (cd "${src}"; find . -iname "${name}" | cpio -pdmu "${dst}")
+}
+
 ########################################
 # OS 別の設定
 case ${OSTYPE} in
