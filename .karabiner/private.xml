@@ -8,10 +8,20 @@
     <productname>M570</productname>
     <productid>0xc52b</productid>
   </deviceproductdef>
+  <deviceproductdef>
+    <productname>M570-2</productname>
+    <productid>0x1028</productid>
+  </deviceproductdef>
   <item>
     <name>Reverse mouse scroll in Logical M570 wireless trackball</name>
-    <identifier>private.remap.reverse_mouse_scroll</identifier>
+    <identifier>private.remap.reverse_mouse_scroll.m570</identifier>
     <device_only>DeviceVendor::Logicool, DeviceProduct::M570</device_only>
+    <autogen>__FlipScrollWheel__ Option::FLIPSCROLLWHEEL_VERTICAL</autogen>
+  </item>
+  <item>
+    <name>Reverse mouse scroll in Logical M570-2 wireless trackball</name>
+    <identifier>private.remap.reverse_mouse_scroll.m570-2</identifier>
+    <device_only>DeviceVendor::Logicool, DeviceProduct::M570-2</device_only>
     <autogen>__FlipScrollWheel__ Option::FLIPSCROLLWHEEL_VERTICAL</autogen>
   </item>
   <item>
@@ -41,6 +51,10 @@
       <appname>RubyMine</appname>
       <equal>com.jetbrains.rubymine</equal>
     </appdef>
+    <appdef>
+      <appname>Atom</appname>
+      <equal>com.github.atom</equal>
+    </appdef>
     <list>
       <item>
         <name>Ctrl-J to Kana on Apple Terminal/iTerm2</name>
@@ -53,12 +67,12 @@
         </autogen>
       </item>
       <item>
-        <name>Ctrl-J to Kana on Apple Terminal/iTerm2 for Dvorak user</name>
-        <only>Terminal</only>
-        <identifier>private.iterm2.ctrl_j_to_kana.dvorak</identifier>
+        <name>Ctrl-J to Kana on Atom</name>
+        <only>Atom</only>
+        <identifier>private.atom.ctrl_j_to_kana</identifier>
         <autogen>
           __KeyToKey__
-          KeyCode::C, ModifierFlag::CONTROL_L,
+          KeyCode::J, ModifierFlag::CONTROL_L,
           KeyCode::JIS_KANA
         </autogen>
       </item>
