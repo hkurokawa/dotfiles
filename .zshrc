@@ -176,12 +176,14 @@ alias awssh-vpc='row=$(awls-vpc); name=$(echo ${row} | cut -f 2); host=$(echo ${
 # Android
 alias lsavds="android list avds | grep -oe 'Name: [a-zA-Z0-9_]*' | sed -e 's/Name: //' | peco"
 alias em='avd=$(lsavds); echo "..running emulator -avd ${avd}"; emulator -avd ${avd}'
-alias em-prox="em -http-proxy http://$(ipconfig getifaddr en0):8888"
+# Uncomment this when you found the equivalent way to do getifaddr on Ubuntu
+#alias em-prox="em -http-proxy http://$(ipconfig getifaddr en0):8888"
 alias adb-pkill='adb shell kill $(adb shell ps | peco | tr -s '"'"' '"'"' '"'"'\t'"'"' | cut -f 2)'
 alias lspkgs="adb shell dumpsys activity | grep -B 1 \"Run #[0-9]*:\" | grep -oe '\(I\|A\)=[a-z.]*' | sed -e 's/^.*=//' | peco"
 
 # Git and ghi
-if [ ! -z $(which brew) ]; then
+command -v brew > /dev/null 2>&1
+if [ ! $? ]; then
     fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
 
     autoload -U compinit
