@@ -215,6 +215,9 @@ alias cr='cd $(ghq list -p | peco)'
 alias -g L='| less'
 alias -g G='| grep'
  
+# Fablic
+alias fril_deploy='bundle exec cap development deploy'
+
 # Setup for qfc (https://github.com/pindexis/qfc)
 [[ -s "$HOME/.qfc/bin/qfc.sh" ]] && source "$HOME/.qfc/bin/qfc.sh"
 if [[ -z $(which qfc_quick_command) ]]; then
