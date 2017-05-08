@@ -9,15 +9,6 @@ export LANG=ja_JP.UTF-8
 autoload -Uz colors
 colors
  
-# vi 風キーバインドにする
-bindkey -v
-bindkey '^P' up-history
-bindkey '^N' down-history
-bindkey '^?' backward-delete-char
-bindkey '^h' backward-delete-char
-bindkey '^w' backward-kill-word
-bindkey '^r' history-incremental-search-backward
- 
 # ヒストリの設定
 HISTFILE=~/.zsh_history
 HISTSIZE=1000000
@@ -216,7 +207,7 @@ alias -g L='| less'
 alias -g G='| grep'
  
 # Fablic
-frilapideploy=bundle exec cap development deploy
+alias fril_deploy='bundle exec cap development deploy'
 
 # Setup for qfc (https://github.com/pindexis/qfc)
 [[ -s "$HOME/.qfc/bin/qfc.sh" ]] && source "$HOME/.qfc/bin/qfc.sh"
