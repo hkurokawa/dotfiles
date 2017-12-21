@@ -4,5 +4,6 @@
 .emacs.d/.mc-lists.el
 .emacs.d/elpa/*
 .emacs.d/url
+.emacs.d/eshell/*
 .byobu/.ssh-agent
 .DS_Store
