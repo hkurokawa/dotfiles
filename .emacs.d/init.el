@@ -102,6 +102,12 @@
    '(variable-pitch ((t (:family "Ricty"))))
    '(fixed-pitch ((t (:family "Ricty"))))
    )
+
+  (set-fontset-font (frame-parameter nil 'font)
+                    'japanese-jisx0208
+                    (font-spec :family "Noto Sans Mono CJK JP"))
+  (add-to-list 'face-font-rescale-alist
+               '("Noto Sans Mono CJK JP" . 1.0))
   )
 
 ;;; Window setting
