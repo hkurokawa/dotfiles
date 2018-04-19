@@ -207,12 +207,12 @@ alias cr='cd $(ghq list -p | peco)'
 alias -g L='| less'
 alias -g G='| grep'
  
-# Setup for qfc (https://github.com/pindexis/qfc)
-[[ -s "$HOME/.qfc/bin/qfc.sh" ]] && source "$HOME/.qfc/bin/qfc.sh"
-if [[ -z $(which qfc_quick_command) ]]; then
-  qfc_quick_command 'cd' '\C-b' 'cd $0'
-  qfc_quick_command 'vi' '\C-l' 'vi $0'
-fi
+# # Setup for qfc (https://github.com/pindexis/qfc)
+# [[ -s "$HOME/.qfc/bin/qfc.sh" ]] && source "$HOME/.qfc/bin/qfc.sh"
+# if which qfc_quick_command > /dev/null; then
+#   qfc_quick_command 'cd' '\C->' 'cd $0'
+#   qfc_quick_command 'vi' '\C-<' 'vi $0'
+# fi
 
 # C で標準出力をクリップボードにコピーする
 # mollifier delta blog : http://mollifier.hatenablog.com/entry/20100317/p1
