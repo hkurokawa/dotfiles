@@ -198,7 +198,7 @@ alias g-log-source='git log -p $(find-code | peco)'
 alias ghi-issno='ghi list | peco | sed -e '"'"'s/^ *\([0-9][0-9]*\).*$/\1/g'"'"
 alias ghi-milno='ghi milestone | peco | sed -e '"'"'s/^ *\([0-9][0-9]*\):.*$/\1/g'"'"
 alias g-delete-merged='git branch --merged | grep -v "\*" | grep -v master | grep -v dev | xargs -n 1 git branch -d'
-eval $(hub alias -s)
+if which hub > /dev/null; then eval $(hub alias -s); fi
 
 # ghq
 alias cr='cd $(ghq list -p | peco)'
@@ -299,18 +299,13 @@ export PATH=$PATH:${ANDROID_SDK}/platform-tools:${ANDROID_SDK}/tools:${ANDROID_N
 export USE_CCACHE=1
 
 #########################################
-# rbenv
-export RBENV_ROOT=/usr/local/var/rbenv
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-
-#########################################
 # Anaconda
 #export PATH=$PATH:$HOME/anaconda/bin
 export PATH=/usr/local/bin:$PATH
 
 #########################################
 # rbenv
-if [ ! -z "$(which rbenv)" ]; then
+if which rbenv > /dev/null; then
     export RBENV_ROOT=${HOME}/.rbenv
     eval "$(rbenv init -)"
 fi
