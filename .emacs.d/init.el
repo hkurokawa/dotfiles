@@ -32,6 +32,9 @@
 ;; add elisp, conf, public_repos to the load path
 (add-to-load-path "elisp")
 
+;;: Exec path
+(add-to-list 'exec-path (expand-file-name "/usr/local/bin")) ;; Mac
+
 ;;; Utility
 (defun apply-region-replace (start end func)
   "run a function over the region between START and END in current buffer."
