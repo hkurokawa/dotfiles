@@ -128,7 +128,13 @@
 (global-set-key "\C-c:" 'uncomment-region)
 
 ;; Assign newline-and-indent for Ctrl-m
-(global-set-key (kbd "C-m") 'newline-and-indent)
+(defun move-end-of-line-and-new-line-and-indent ()
+  (interactive)
+  "Move to the end of the line and feed the line, then indent"
+  (move-end-of-line nil)
+  (newline-and-indent)
+  )
+(global-set-key (kbd "C-m") 'move-end-of-line-and-new-line-and-indent)
 
 ;; Delete region with C-d without saving it to kill-ring
 (defun delete-char-or-region ()
