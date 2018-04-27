@@ -134,7 +134,7 @@
   (move-end-of-line nil)
   (newline-and-indent)
   )
-(global-set-key (kbd "C-m") 'move-end-of-line-and-new-line-and-indent)
+(global-set-key (kbd "C-j") 'move-end-of-line-and-new-line-and-indent)
 
 ;; Delete region with C-d without saving it to kill-ring
 (defun delete-char-or-region ()
@@ -145,7 +145,7 @@
     (delete-char 1)
     )
   )
-(global-set-key "\C-d" 'delete-char-or-region)
+(global-set-key (kbd "C-d") 'delete-char-or-region)
 
 
 ;;; Text editing
