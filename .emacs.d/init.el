@@ -623,6 +623,9 @@ Including indent-buffer, which should not be called automatically on save."
   (add-to-list 'auto-mode-alist '("\\.jq$" . jq-mode))
   (custom-set-variables '(jq-interactive-default-options "")))
 
+(when (require 'wakatime-mode nil t)
+  (global-wakatime-mode))
+
 ;;; General format
 ;; Disable tab format
 (custom-set-variables
