@@ -600,13 +600,14 @@ Including indent-buffer, which should not be called automatically on save."
   ;; Use master password to avoid input one-time-password every time I launch emacs.
   (setq twittering-use-master-password t)
   ;; Show icons
-  (setq twittering-icon-mode t)
+  (setq twittering-icon-mode nil)
   ;; Show number of unread messages
   (twittering-enable-unread-status-notifier)
   ;; Show number of remaining API calls
   (setq twittering-display-remaining t)
   ;; Twitter status format
-  (setq twittering-status-format "%i %S (%s), %FACE[font-lock-preprocessor-face]{%p} %FACE[font-lock-comment-face]{%@}:\n%FILL{  %T %FACE[font-lock-comment-face]{// from %f%L%r%R} %FACE[font-lock-keyword-face]{%e} %FACE[font-lock-function-name-face]{%F}}")
+  ;;  (setq twittering-status-format "%i %S (%s), %FACE[font-lock-preprocessor-face]{%p} %FACE[font-lock-comment-face]{%@}:\n%FILL{  %T %FACE[font-lock-comment-face]{// from %f%L%r%R} %FACE[font-lock-keyword-face]{%e} %FACE[font-lock-function-name-face]{%F}}")
+  (setq twittering-status-format "%i %s, %FACE[font-lock-preprocessor-face]{%p} %FACE[font-lock-comment-face]{%@}:\n%FILL{  %T %FACE[font-lock-keyword-face]{%e} %FACE[font-lock-function-name-face]{%F}}")
   ;; Custom keys
   (add-hook 'twittering-mode-hook
            (define-key twittering-mode-map (read-kbd-macro "F") 'twittering-favorite))
