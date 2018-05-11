@@ -227,6 +227,12 @@ elif which putclip >/dev/null 2>&1 ; then
     alias -g C='| putclip'
 fi
 
+if which xsel > /dev/null 2>&1 ; then
+    alias pbcopy='xsel --clipboard --input'
+    alias pbpaste='xsel --clipboard --output'
+fi
+
+
 #########################################
 # Functions
 copy_structure() {
