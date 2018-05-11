@@ -296,16 +296,15 @@ export PATH=$PATH:${ANDROID_SDK}/platform-tools:${ANDROID_SDK}/tools:${ANDROID_N
 export USE_CCACHE=1
 
 #########################################
-# Anaconda
-#export PATH=$PATH:$HOME/anaconda/bin
-export PATH=/usr/local/bin:$PATH
-
-#########################################
 # rbenv
 if which rbenv > /dev/null; then
     export RBENV_ROOT=${HOME}/.rbenv
     eval "$(rbenv init -)"
 fi
+
+#########################################
+# nodebrew
+export PATH=$HOME/.nodebrew/current/bin:$PATH
 
 #########################################
 # Utils
