@@ -14,10 +14,12 @@
 ;;   limitations under the License.
 
 ;;
-;; evernote-mode home page is at: http://code.google.com/p/emacs-evernote-mode/
-;; Author: Yusuke KAWAKAMI, Akihiro ARISAWA
-;; Version: 0.41
+;; Authors: Luke Amdor <luke.amdor@gmail.com>, Erik L. Arneson <earneson@arnesonium.com>
+;; Original Authors: Yusuke KAWAKAMI, Akihiro ARISAWA
+;; Version: 0.5
 ;; Keywords: tools, emacs, evernote, bookmark
+;; Home Page: https://github.com/pymander/evernote-mode
+;; Original Home Page: http://code.google.com/p/emacs-evernote-mode/
 
 ;; This emacs lisp offers the interactive functions to open, edit, and update notes of Evernote.
 ;; The minor mode Evernote-mode is applied to the buffer editing a note of Evernote.
@@ -183,7 +185,7 @@
   :link '(url-link 
           "http://dev.evernote.com/doc/articles/authentication.php#devtoken")
   :group 'evernote
-  :type '(list string))
+  :type 'string)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Interface for evernote-browsing-mode.
@@ -573,26 +575,9 @@
   "Login"
   (interactive)
   (if (called-interactively-p) (enh-clear-onmem-cache))
-  (if evernote-developer-token
-      (enh-command-login-token evernote-developer-token) 
-    (unwind-protect
-        (let* ((cache (enh-password-cache-load))
-               (usernames (mapcar #'car cache))
-               (username (or evernote-username
-                             (read-string "Evernote user name:"
-                                          (car usernames) 'usernames)))
-               (cache-passwd (enutil-aget username cache)))
-          (unless (and cache-passwd
-                       (eq (catch 'error 
-                             (progn 
-                               (enh-command-login username cache-passwd)
-                               t))
-                           t))
-            (let* ((passwd (read-passwd "Passwd:")))
-              (enh-command-login username passwd)
-              (setq evernote-username username)
-              (enh-password-cache-save (enutil-aset username cache passwd)))))
-      (enh-password-cache-close))))
+  (unless evernote-developer-token
+    (error "You must define `evernote-developer-token' before using this package. Please read the documentation."))
+  (enh-command-login-token evernote-developer-token)) 
 
 (defun evernote-open-note (&optional ask-notebook)
   "Open a note"
@@ -1748,8 +1733,7 @@
 ;; Functions for executing the external command (enh-command-xxx)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; (defvar enh-enclient-command "/usr/bin/enclient.rb"
-(defvar enh-enclient-command (expand-file-name (concat (file-name-directory load-file-name) "bin/enclient.rb"))
+(defvar enh-enclient-command "/usr/bin/enclient.rb"
   "Name of the enclient.rb command")
 (defconst enh-command-process-name "Evernote-Client")
 (defconst enh-command-output-buffer-name "*Evernote-Client-Output*")
@@ -1952,9 +1936,10 @@
     (save-excursion
       (set-buffer buffer)
       (erase-buffer)
-      ;(delete-region (point-min) (point-max))
       (setq enh-command-next-command-id
             (+ 1 enh-command-next-command-id))
+      ;; @pymander debugs here
+      ;;(message "ENC Command => %s" command)
       (process-send-string proc
                            (format "{%s, :command_id => %d}"
                                    command enh-command-next-command-id))

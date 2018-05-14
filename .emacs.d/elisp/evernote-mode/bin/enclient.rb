@@ -1,4 +1,4 @@
-#! /usr/bin/ruby1.9.1 -sWKu
+#! /Users/hiroshi/.rbenv/versions/2.3.0/bin/ruby -sWKu
 # -*- coding: utf-8 -*-
 
 #
@@ -93,11 +93,13 @@ module EnClient
       fields = str.split ","
       fields.each do |f|
         f =~ /\A([^=]*)=(.*)\z/
+        if $1.nil? then
+          next;
+        end
         varsym = $1.to_sym
         varval_str = $2
         vartype = serialized_fields[varsym]
         #puts "[#{varsym}], [#{varval_str}], [#{vartype}]"
-
         varval =
           if varval_str
             case vartype
@@ -219,9 +221,9 @@ module Evernote
 
         def serialized_fields
           { :subjectDate => :field_type_timestamp,
-            :latitude => :field_type_string, # double
-            :longitude => :field_type_string, # double
-            :altitude => :field_type_string, # double
+            :latitude => :field_type_int, # double
+            :longitude => :field_type_int, # double
+            :altitude => :field_type_int, # double
             :author => :field_type_string,
             :source => :field_type_string,
             :sourceURL => :field_type_string,
@@ -531,8 +533,8 @@ module EnClient
     def to_xhtml(content)
       content = CGI.escapeHTML content
       content.gsub! %r{ }, %{&nbsp;}
-        content.gsub! %r{(?:\r\n)|\n|\r}, %|<br clear="none"/>|
-        content = NOTE_DEFAULT_HEADER + content + NOTE_DEFAULT_FOOTER
+      content.gsub! %r{(?:\r\n)|\n|\r}, %|<br clear="none"/>|
+      content = NOTE_DEFAULT_HEADER + content + NOTE_DEFAULT_FOOTER
     end
   end
 
@@ -1770,7 +1772,6 @@ module EnClient
     end
 
     def self.encode_base64(str)
-      str.encode(Encoding::UTF_8)
       b64str = Base64.encode64 str
       b64str.delete "\n\r"
     end
@@ -1782,8 +1783,7 @@ module EnClient
     end
 
     def self.decode_base64(b64str)
-      s = Base64.decode64 b64str
-      s.force_encoding(Encoding::UTF_8)
+      Base64.decode64 b64str
     end
 
     def self.decode_base64_list(b64list)
@@ -1833,11 +1833,15 @@ module EnClient
       full_class_name.split("::")[-1]
     end
 
-    # IS_FORCE_ENCODING_SUPPORTED = "".respond_to? :force_encoding
-    IS_FORCE_ENCODING_SUPPORTED = false
+    IS_FORCE_ENCODING_SUPPORTED = "".respond_to? :force_encoding
     def self.to_ascii(*rest)
       if IS_FORCE_ENCODING_SUPPORTED
         rest.each do |elem|
+          if elem
+           if elem.bytesize > elem.length
+             return
+           end
+          end
           elem.force_encoding Encoding::ASCII_8BIT if elem
         end
       end
