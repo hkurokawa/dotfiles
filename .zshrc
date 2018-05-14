@@ -3,6 +3,7 @@
 ########################################
 # 環境変数
 export LANG=ja_JP.UTF-8
+export LC_CTYPE=ja_JP.UTF-8
  
  
 # 色を使用出来るようにする
@@ -197,7 +198,7 @@ alias g-log-source='git log -p $(find-code | peco)'
 alias ghi-issno='ghi list | peco | sed -e '"'"'s/^ *\([0-9][0-9]*\).*$/\1/g'"'"
 alias ghi-milno='ghi milestone | peco | sed -e '"'"'s/^ *\([0-9][0-9]*\):.*$/\1/g'"'"
 alias g-delete-merged='git branch --merged | grep -v "\*" | grep -v master | grep -v dev | xargs -n 1 git branch -d'
-eval $(hub alias -s)
+if which hub > /dev/null; then eval $(hub alias -s); fi
 
 # ghq
 alias cr='cd $(ghq list -p | peco)'
@@ -206,15 +207,12 @@ alias cr='cd $(ghq list -p | peco)'
 alias -g L='| less'
 alias -g G='| grep'
  
-# Fablic
-alias fril_deploy='bundle exec cap development deploy'
-
-# Setup for qfc (https://github.com/pindexis/qfc)
-[[ -s "$HOME/.qfc/bin/qfc.sh" ]] && source "$HOME/.qfc/bin/qfc.sh"
-if [[ -z $(which qfc_quick_command) ]]; then
-  qfc_quick_command 'cd' '\C-b' 'cd $0'
-  qfc_quick_command 'vi' '\C-l' 'vi $0'
-fi
+# # Setup for qfc (https://github.com/pindexis/qfc)
+# [[ -s "$HOME/.qfc/bin/qfc.sh" ]] && source "$HOME/.qfc/bin/qfc.sh"
+# if which qfc_quick_command > /dev/null; then
+#   qfc_quick_command 'cd' '\C->' 'cd $0'
+#   qfc_quick_command 'vi' '\C-<' 'vi $0'
+# fi
 
 # C で標準出力をクリップボードにコピーする
 # mollifier delta blog : http://mollifier.hatenablog.com/entry/20100317/p1
@@ -228,6 +226,12 @@ elif which putclip >/dev/null 2>&1 ; then
     # Cygwin
     alias -g C='| putclip'
 fi
+
+if which xsel > /dev/null 2>&1 ; then
+    alias pbcopy='xsel --clipboard --input'
+    alias pbpaste='xsel --clipboard --output'
+fi
+
 
 #########################################
 # Functions
@@ -299,20 +303,14 @@ export USE_CCACHE=1
 
 #########################################
 # rbenv
-export RBENV_ROOT=/usr/local/var/rbenv
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-
-#########################################
-# Anaconda
-#export PATH=$PATH:$HOME/anaconda/bin
-export PATH=/usr/local/bin:$PATH
-
-#########################################
-# rbenv
-if [ ! -z "$(which rbenv)" ]; then
+if which rbenv > /dev/null; then
     export RBENV_ROOT=${HOME}/.rbenv
     eval "$(rbenv init -)"
 fi
+
+#########################################
+# nodebrew
+export PATH=$HOME/.nodebrew/current/bin:$PATH
 
 #########################################
 # Utils
@@ -334,3 +332,9 @@ esac
 [[ -s "$HOME/google-cloud-sdk/completion.zsh.inc" ]] && source "$HOME/google-cloud-sdk/completion.zsh.inc"
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/hiroshi/Downloads/gcloud/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/hiroshi/Downloads/gcloud/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/hiroshi/Downloads/gcloud/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/hiroshi/Downloads/gcloud/google-cloud-sdk/completion.zsh.inc'; fi
