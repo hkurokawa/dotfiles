@@ -55,6 +55,10 @@
       <appname>Atom</appname>
       <equal>com.github.atom</equal>
     </appdef>
+    <appdef>
+      <appname>VSCode</appname>
+      <equal>com.microsoft.VSCode</equal>
+    </appdef>
     <list>
       <item>
         <name>Ctrl-J to Kana on Apple Terminal/iTerm2</name>
@@ -70,6 +74,16 @@
         <name>Ctrl-J to Kana on Atom</name>
         <only>Atom</only>
         <identifier>private.atom.ctrl_j_to_kana</identifier>
+        <autogen>
+          __KeyToKey__
+          KeyCode::J, ModifierFlag::CONTROL_L,
+          KeyCode::JIS_KANA
+        </autogen>
+      </item>
+      <item>
+        <name>Ctrl-J to Kana on VSCode</name>
+        <only>VSCode</only>
+        <identifier>private.vscode.ctrl_j_to_kana</identifier>
         <autogen>
           __KeyToKey__
           KeyCode::J, ModifierFlag::CONTROL_L,
