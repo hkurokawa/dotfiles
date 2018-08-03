@@ -509,13 +509,13 @@
 (require 'flymake-cursor nil t)
 
 ;;; Go direx
-(when (require 'go-direx nil t)
+(ignore-errors (when (require 'go-direx nil t)
   (define-key go-mode-map (kbd "C-c C-j") 'go-direx-pop-to-buffer)
   (require 'popwin)
   (setq display-buffer-function 'popwin:display-buffer)
 
   (push '("^\*go-direx:" :regexp t :position left :width 0.4 :dedicated t :stick t)
-	popwin:special-display-config))
+	popwin:special-display-config)))
 
 ;;; js2-mode
 (autoload 'js2-mode "js2-mode" nil t)
@@ -586,7 +586,7 @@ Including indent-buffer, which should not be called automatically on save."
 ;;   )
 
 ;;; Setting for Helm
-(when (require 'helm-config nil t))
+(ignore-errors (when (require 'helm-config nil t)))
 
 ;;; Setting for Google This
 ;; (https://github.com/Bruce-Connor/emacs-google-this)
