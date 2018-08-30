@@ -517,7 +517,8 @@ Including indent-buffer, which should not be called automatically on save."
 (when (require 'wakatime-mode nil t)
   (global-wakatime-mode))
 
-;;; General format
-;; Disable tab format
 (custom-set-variables
- '(indent-tabs-mode nil))
+ ;; Disable tab format
+ '(indent-tabs-mode nil)
+ ;; Debug on error
+ '(debug-on-error t))
