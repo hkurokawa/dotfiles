@@ -315,15 +315,6 @@ export PATH=$HOME/.nodebrew/current/bin:$PATH
 #########################################
 # Utils
 export PATH=$PATH:$HOME/bin
-case "${OSTYPE}" in
-# Mac(Unix)
-darwin*)
-    export PYTHONPATH=/usr/local/lib/python2.7/site-packages
-    ;;  
-# Linux
-linux*)
-    ;;  
-esac
 
 # The next line updates PATH for the Google Cloud SDK.
 [[ -s "$HOME/google-cloud-sdk/path.zsh.inc" ]] && source "$HOME/google-cloud-sdk/path.zsh.inc"
