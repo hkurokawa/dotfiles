@@ -325,10 +325,7 @@ export PATH=$PATH:$HOME/bin
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/hiroshi/Downloads/gcloud/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/hiroshi/Downloads/gcloud/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '/usr/local/opt/share/google-cloud-sdk/path.zsh.inc' ]; then . '/usr/local/opt/share/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/hiroshi/Downloads/gcloud/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/hiroshi/Downloads/gcloud/google-cloud-sdk/completion.zsh.inc'; fi
-
-# Yarn
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+if [ -f '/usr/local/opt/share/google-cloud-sdk/completion.zsh.inc' ]; then . '/usr/local/opt/share/google-cloud-sdk/completion.zsh.inc'; fi
