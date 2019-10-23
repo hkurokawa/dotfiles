@@ -518,7 +518,20 @@ Including indent-buffer, which should not be called automatically on save."
   (global-wakatime-mode))
 
 (custom-set-variables
- ;; Disable tab format
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(debug-on-error t)
  '(indent-tabs-mode nil)
- ;; Debug on error
- '(debug-on-error t))
+ '(jq-interactive-default-options "")
+ '(package-selected-packages
+   (quote
+    (restclient sml-mode ddskk wakatime-mode twittering-mode graphviz-dot-mode direx anything))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(fixed-pitch ((t (:family "Ricty"))))
+ '(variable-pitch ((t (:family "Ricty")))))
