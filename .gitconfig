@@ -22,6 +22,7 @@
         lt = log --oneline --graph
 	co = checkout
 	cm = commit -m
+	sw = switch
 	df = diff
 	dc = diff --cached
 [core]
