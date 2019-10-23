@@ -329,3 +329,15 @@ if [ -f '/usr/local/opt/share/google-cloud-sdk/path.zsh.inc' ]; then . '/usr/loc
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/usr/local/opt/share/google-cloud-sdk/completion.zsh.inc' ]; then . '/usr/local/opt/share/google-cloud-sdk/completion.zsh.inc'; fi
+
+# Yarn
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+# NVM
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+eval "$(direnv hook bash)"
+
+# SML/NJ
+PATH=$PATH:/usr/share/smlnj
