@@ -27,6 +27,7 @@
 	dc = diff --cached
 [core]
 	autocrlf = input
+	editor = vi
 [merge]
 	ff = true
 [tig "bind"]
