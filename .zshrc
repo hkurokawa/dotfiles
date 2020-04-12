@@ -342,4 +342,4 @@ if which direnv > /dev/null; then
 fi
 
 # SML/NJ
-PATH=$PATH:/usr/share/smlnj
+PATH=/usr/share/smlnj/bin:$PATH
