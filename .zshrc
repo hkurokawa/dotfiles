@@ -1,4 +1,5 @@
 # 少し凝った zshrc
+zmodload zsh/zprof
  
 ########################################
 # 環境変数
@@ -334,12 +335,15 @@ if [ -f '/usr/local/opt/share/google-cloud-sdk/completion.zsh.inc' ]; then . '/u
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 # NVM
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-if which direnv > /dev/null; then
-  eval "$(direnv hook bash)"
-fi
+#export NVM_DIR="$HOME/.nvm"
+#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+#if which direnv > /dev/null; then
+#  eval "$(direnv hook bash)"
+#fi
 
 # SML/NJ
 PATH=/usr/share/smlnj/bin:$PATH
+
+# Print out load stats
+#zprof
